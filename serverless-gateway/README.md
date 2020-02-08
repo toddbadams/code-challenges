@@ -1,16 +1,8 @@
-**STATUS** currently being documented, pre code devlopment.
+
 
 # Azure functions serverless gateway
 
-- [Authorization](#Authorization)
-- [Correlation](#Correlation)
-- [Routing](#Routing)
-- [Eventing](#Eventing)
-- [Tracing](#Tracing)
-- [WebSockets](#WebSockets)
-- [Middleware](#Middleware)
-- [Configuration](#Configuration)
-
+A simple gateway pattern using pipelines and middleware to call downstream microservices.
 
 ## Authorization
 
