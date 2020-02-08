@@ -48,7 +48,7 @@ This especially useful in LINQ query expressions combined anonymous types.
                 new Wine {Vintage = 2005, Name = "Petrus", Region = "Pomerol"},
                 new Wine("Le Pin") {Vintage = 2000, Region = "Pomerol"}
             };
-            // anonymous inititalizer
+            // anonymous initializer
             foreach (var w in wines.Select(_ => new {_.Vintage, _.Region}))
             {
                 // do stuff
@@ -158,5 +158,33 @@ There are two common scenarios:
         // free thread while waiting on external web service
         public async Task<HttpResponseMessage> GetWines() =>
             await _httpClient.GetAsync(new Uri("http://winejargon.com"));
+    };
+```
+
+## Lamda Expressions
+
+Two forms of the lambda:
+
+1. Expression lambda - used in the construction of expression trees
+
+``` csharp
+    // zero input parameters 
+    public Action BlankWine = () => new Wine();
+
+    // Two or more input parameters 
+    private readonly Func<Wine, Wine, bool> _isSameVintage = (x, y) => x.Vintage == y.Vintage;
+
+    // Sometimes it's impossible to infer the input types.
+    // Specify the types explicitly
+    private readonly Func<Wine, dynamic> _selector = (Wine w) => new { w.Vintage, w.Region };
+```
+
+2. Statement lambda 
+
+``` csharp
+    public Func<string, int, Wine> BlankWine = (string name, int vintage) =>
+    {
+        if (string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException(nameof(name));
+        return new Wine(name) { Vintage = vintage }; 
     };
 ```
