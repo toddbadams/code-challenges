@@ -4,17 +4,18 @@ using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.ServiceBus;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Azure.ServiceBus;
 using Newtonsoft.Json;
 using Tba.CqrsEs.Application.ClientModels;
 using Tba.CqrsEs.Application.Commands;
+using Tba.CqrsEs.Application.Commands.RequestBodies;
 using Tba.CqrsEs.Application.Interfaces;
 
-namespace Tba.CqrsEs
+namespace Tba.CqrsEs.Presentation
 {
     public class WineApi
     {
@@ -47,19 +48,7 @@ namespace Tba.CqrsEs
                 async () => _commandFactory.UpdateWineCommand(wineId, await ReadBodyAsync<UpdateWineBody>(req), req.Headers),
                 messages);
 
-        [FunctionName(Name + "-delete")]
-        public async Task<IActionResult> Delete(
-            [HttpTrigger(AuthorizationLevel.Function, "delete", Route = Name + "/{wineId}")]
-            HttpRequest req,
-            string wineId,
-            [ServiceBus("events", Connection = "TopicSend")]
-            IAsyncCollector<Message> messages) =>
-            await ProcessRequest(
-                func: () => _commandFactory.DeleteWineCommand(wineId, req.Headers),
-                messages);
-
-
-        private static async Task<IActionResult> ProcessRequest(Func<Task<WineCommand>> func, IAsyncCollector<Message> messages)
+        private static async Task<IActionResult> ProcessRequest(Func<Task<WineCommandBase>> func, IAsyncCollector<Message> messages)
         {
             try
             {
@@ -74,33 +63,23 @@ namespace Tba.CqrsEs
             }
         }
 
-        private static async Task<IActionResult> ProcessRequest(Func<WineCommand> func, IAsyncCollector<Message> messages)
-        {
-            try
-            {
-                var cmd = func();
-                await messages.AddAsync(cmd.Message);
-                var response = new AcceptedResponse(cmd.WineId, cmd.Version);
-                return new AcceptedResult(new Uri($"wines/{response.Id}", UriKind.Relative), response);
-            }
-            catch (Exception)
-            {
-                return new BadRequestObjectResult(new ErrorResponse(null, 0, "Failed to process request."));
-            }
-        }
-
         private static async Task<T> ReadBodyAsync<T>(HttpRequest req)
         {
-            T body;
+            T model;
             using (var sr = new StreamReader(req.Body))
-                body = Deserialize<T>(await sr.ReadToEndAsync());
-            return body;
+                model = Deserialize<T>(await sr.ReadToEndAsync());
+            Validate(model);
+            return model;
         }
 
         private static T Deserialize<T>(string text)
         {
             if (string.IsNullOrWhiteSpace(text)) throw new ArgumentNullException();
-            var model = JsonConvert.DeserializeObject<T>(text);
+            return JsonConvert.DeserializeObject<T>(text);
+        }
+
+        private static T Validate<T>(T model)
+        {
             var context = new ValidationContext(model, null, null);
             var results = new List<ValidationResult>();
             if (!Validator.TryValidateObject(model, context, results))

@@ -4,11 +4,11 @@ using Microsoft.Extensions.Primitives;
 
 namespace Tba.CqrsEs.Application.Commands
 {
-    public abstract class WineCommand
+    public abstract class WineCommandBase
     {
         private readonly IDictionary<string, StringValues> _headers;
 
-        protected WineCommand(string wineId, IDictionary<string, StringValues> headers)
+        protected WineCommandBase(string wineId, IDictionary<string, StringValues> headers)
         {
             _headers = headers;
             WineId = wineId;

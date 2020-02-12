@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Extensions.Primitives;
+using Tba.CqrsEs.Application.Commands.RequestBodies;
 using Tba.CqrsEs.Application.Interfaces;
 
 namespace Tba.CqrsEs.Application.Commands
@@ -17,8 +18,5 @@ namespace Tba.CqrsEs.Application.Commands
 
         public UpdateWineCommand UpdateWineCommand(string wineId, UpdateWineBody body, IDictionary<string, StringValues> headers) => 
             new UpdateWineCommand(wineId, body, headers);
-
-        public DeleteWineCommand DeleteWineCommand(string wineId, IDictionary<string, StringValues> headers) => 
-            new DeleteWineCommand(wineId, headers);
     }
 }
