@@ -1,8 +1,6 @@
-# 10 important c# features
-
 ## Object / array / collection initializers
 
-C# lets you instantiate an object, arrray or collection and perform initialization in a single statement.
+C# lets you instantiate an object, array or collection and perform initialization in a single statement.
 
 ``` csharp
     public class Wine
@@ -124,7 +122,7 @@ Available in C# 6 and later, a null-conditional operator applies a member access
 There are two common scenarios:
 
 1.  I/O Bound such as requesting data from a DB. Use `await` operation which returns a Task or Task<T> inside of an async method.
-1.  CPU Bound such as performing an expensive calucation. Use `await` operation which is started on a background thread with the Task.Run method.
+1.  CPU Bound such as performing an expensive calculation. Use `await` operation which is started on a background thread with the Task.Run method.
 
 ``` csharp
 

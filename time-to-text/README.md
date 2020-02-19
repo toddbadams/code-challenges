@@ -34,7 +34,7 @@ Write a command-line program that returns the current time as human-readable tex
 | 23:55 | Five to midnight |
 
 ### Arbitrary time
-Allow the command to take an arbitrary Numeric Time. Return an invalid message when the time is not well formated.  Permitted time entries may or may not include a colon and may or may not have leading zeros.
+Allow the command to take an arbitrary Numeric Time. Return an invalid message when the time is not well formatted.  Permitted time entries may or may not include a colon and may or may not have leading zeros.
 
 ### REST API
 Write a REST service to expose the clock and allow an optional parameter, returning as JSON.

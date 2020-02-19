@@ -24,7 +24,7 @@ this has the following payload:
 }
 ```
 ### Downstream headers
-The incomming claims are expressed as headers in the downstream request as:
+The incoming claims are expressed as headers in the downstream request as:
 
 ``` json
 x-jwt-sub: a76c371c-5354-44f5-a9cd-5ecbd464d582
@@ -34,17 +34,17 @@ x-jwt-iat: 1516239022
 
 
 ## Correlation
-Reads an incomming header `X-Request-ID` and applies that to the downstream request. If the header is absent a GUID value is generated.
+Reads an incoming header `X-Request-ID` and applies that to the downstream request. If the header is absent a GUID value is generated.
 
 ```
 X-Request-ID: 94836156-78ac-4b9d-9beb-01786f975f12
 ```
 
 ## Routing
-Routes incomming requests to a downstream service. 
+Routes incoming requests to a downstream service. 
 
 ### Example
-In this example an anonymous endpoint is created that supports `GET` method.  The incoming route is given by `wines/{wineId?}`, this allows and optional routing parameter of the wine identifer.
+In this example an anonymous endpoint is created that supports `GET` method.  The incoming route is given by `wines/{wineId?}`, this allows and optional routing parameter of the wine identifier.
 
 The downstream service configuration is given by the string array `"wines-v1", "wines-v2"`.  This then retrieves the following convention based settings from Azure Configuration Management.
 - `wines-v1-route`: /api/v1/wines/{wineId?}
@@ -76,3 +76,4 @@ The downstream service configuration is given by the string array `"wines-v1", "
         }
     }
 ```
+
