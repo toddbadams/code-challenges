@@ -110,7 +110,7 @@ Looking at the `time-to-text` processing class we can see that indeed each of th
 
 ## Function honesty
 
-A function should convey about the possible input and resultant output.  It always honors its signature. Let's look at an example function that is not honest:
+A function should always honour its signature and convey intent about the possible input and resultant output.  Let's look at an example function that is not honest:
 
 ``` csharp
     private static string ConvertToBasicFormat(string time)
@@ -131,5 +131,33 @@ In the above example it is possible to return a null, which is not a string. Let
     }
 ```
 
-In the above example even if the input is null we get a default string response. 
+In the above example even if the input is null we get a default string response.
+
+## First class citizens
+A function that is a first class citizen means it can be used and input or output to another function.  These functions can be assigned to variables, and stored in a data collection. Let's look at the following example from `time-to-text`:
+
+``` csharp
+        private Func<int, string> DoubleDigitNumberFunc => (int i) => $"{_numberToTextDictionary[i - i % 10]} {_numberToTextDictionary[i % 10].ToLowerInvariant()}";
+```
+
+## Higher-order functions (HOF)
+HOFs take one or more functions as parameters and returns a function, result or both. All other functions are considered first order functions.
+
+
+``` csharp
+     private string ConvertMinutes(int minutes, Func<int, string> doubleDigitNumberFunc)
+    {
+        switch (minutes)
+        {
+            case int n when n < 21 || n == 30:
+                return $"{_numberToTextDictionary[minutes]} past";
+            case int n when n > 20 && n < 30:
+                return $"{doubleDigitNumberFunc(minutes)} past";
+            case int n when 60 - n < 21:
+                return $"{_numberToTextDictionary[60 - minutes]} to";
+            default:
+                return $"{doubleDigitNumberFunc(60 - minutes)} to";
+        }
+    }
+```
 
