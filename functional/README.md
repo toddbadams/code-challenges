@@ -86,9 +86,9 @@ Imperative programming uses statements that change a program's state and focuses
     }
 ```
 
-Imperative programming makes uses of for-each loops, if-statements, and switch statements.  The above c# class is a type of imperative programming known as procedural programming.  It is build from public method `Process(string time)` and calls a number of functions to compose the solution.  This technique improve maintainability and overall quality of imperative programming.  It is a step along the way to declarative programming.
+Imperative programming makes uses of for-each loops, if-statements, and switch statements.  The above c# class is a type of imperative programming known as procedural programming.  It is build from public method `Process(string time)` and calls a number of functions to compose the solution.  This technique improves maintainability and overall quality of imperative programming, and is a step along the way to declarative programming.
 
-Declarative programming is  accomplished using expressions and declarations instead of statements.  Functional programming is a form of declarative programming that expresses computation as pure functional transformation of data. 
+Declarative programming is  accomplished using expressions and declarations instead of statements.  Functional programming is a form of declarative programming that expresses computation as pure functional transformation of data.  Let's look at some key concepts in functional programming.
 
 
 ## Referential transparency
