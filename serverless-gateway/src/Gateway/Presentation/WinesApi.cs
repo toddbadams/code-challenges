@@ -1,3 +1,4 @@
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Gateway.Application.Interfaces;
@@ -38,3 +39,4 @@ namespace Gateway.Presentation
             HttpRequestMessage req) => await _pipeline.ExecuteAsync(Name, req);
     }
 }
+
