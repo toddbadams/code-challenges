@@ -47,7 +47,7 @@ namespace TimeToSpeech.Application
         private static string ConvertToBasicFormat(string time)
         {
             var result = time?.Replace(":", "");
-            return result != null && result.Length == 3 ? $"0{result}" : result;
+            return result != null && result.Length == 3 ? $"0{result}" : result ?? "0000";
         }
 
         private static bool IsValidBasicFormat(string time) =>

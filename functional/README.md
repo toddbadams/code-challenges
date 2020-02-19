@@ -90,7 +90,6 @@ Imperative programming makes uses of for-each loops, if-statements, and switch s
 
 Declarative programming is  accomplished using expressions and declarations instead of statements.  Functional programming is a form of declarative programming that expresses computation as pure functional transformation of data.  Let's look at some key concepts in functional programming.
 
-
 ## Referential transparency
 
 All programs can be decomposed into subprograms, and those again into smaller subprograms.  A subprogram is referentially transparent if it can be replaced by its return value.  Said another way: A function should indicate the result only by looking at the values of its parameters.
@@ -107,12 +106,30 @@ This function returns a different answer based on the current time `DateTime.Now
 public int DaysBetween(DateTime from, DateTime to) => (to - from).Days;
 ```
 
-## Referential transparency in imperative programming
+Looking at the `time-to-text` processing class we can see that indeed each of the functions are referentially transparent.
 
+## Function honesty
 
-Both imperative and functional programming use functions. Although functional programming uses only functions, imperative programming uses:
+A function should convey about the possible input and resultant output.  It always honors its signature. Let's look at an example function that is not honest:
 
-pure functions: methods returning values and having no other effects
-pure effects: methods returning nothing but changing something outside of them)
-functions with side effects: methods both returning a value and changing something
-As we all know, it is good practice to avoid functions with side effects. This leaves imperative programmers with pure functions and pure effects. Referential transparency is then a powerful tool for imperative programmers to make their programs easier to reason about, and easier to test.
+``` csharp
+    private static string ConvertToBasicFormat(string time)
+    {
+        if (time == null) return null;
+        var result = time.Replace(":", "");
+        return result.Length == 3 ? $"0{result}" : result;
+    }
+```
+
+In the above example it is possible to return a null, which is not a string. Let's improve this function by making it honest.
+
+``` csharp
+    private static string ConvertToBasicFormat(string time)
+    {
+        var result = time?.Replace(":", "");
+        return result != null && result.Length == 3 ? $"0{result}" : result ?? "0000";
+    }
+```
+
+In the above example even if the input is null we get a default string response. 
+
