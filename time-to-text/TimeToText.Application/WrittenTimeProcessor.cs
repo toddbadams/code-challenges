@@ -42,7 +42,7 @@ namespace TimeToSpeech.Application
 
             return minutes == 0
                 ? $"{ConvertHours(hours)} {OClock}"
-                : $"{ConvertMinutes(minutes, DoubleDigitNumberFunc)} {ConvertHours(minutes > 30 ? hours + 1 : hours).ToLowerInvariant()}";
+                : $"{new Minutes(minutes).ToString()} {ConvertHours(minutes > 30 ? hours + 1 : hours).ToLowerInvariant()}";
         }
 
         private static string ConvertToBasicFormat(string time)
@@ -66,35 +66,6 @@ namespace TimeToSpeech.Application
                     return _numberToTextDictionary[hours > 12 ? hours - 12 : hours];
             }
         }
-
-        private Func<int, bool> IsTwentyOrLess => (int i) => i < 21;
-        private Func<int, bool> IsBetweenTwentyOneAndTwentyNine => (int i) => i > 20 && i < 30;
-        private Func<int, bool> IsThirty => (int i) => i == 30;
-        private Func<int, bool> IsBetweenThirtyOneAndThirtyNine => (int i) => i > 30 && i < 40;
-        private Func<int, bool> IsBetweenFortyAndFiftyNine => (int i) => i > 40 && i < 60;
-
-        private Func<int, Func<int, string>, string> TwentyOrLess => (minutes, formatter) => $"{_numberToTextDictionary[minutes]} past";
-        private Func<int, Func<int, string>, string> BetweenTwentyOneAndTwentyNine => (minutes, formatter) => $"{formatter(minutes)} past";
-        private Func<int, Func<int, string>, string> BetweenFortyAndFiftyNine => (minutes, formatter) => $"{_numberToTextDictionary[60 - minutes]} to";
-        private Func<int, Func<int, string>, string> BetweenThirtyOneAndThirtyNine => (minutes, formatter) => $"{formatter(60 - minutes)} to";
-
-        private Func<int, string> DoubleDigitNumberFunc => (int i) => $"{_numberToTextDictionary[i - i % 10]} {_numberToTextDictionary[i % 10].ToLowerInvariant()}";
-
-        private string ConvertMinutes(int minutes, Func<int, string> doubleDigitNumberFormatter)
-        {
-            switch (minutes)
-            {
-                case int n when IsTwentyOrLess(n) || IsThirty(n):
-                    return TwentyOrLess(minutes, doubleDigitNumberFormatter);
-                case int n when IsBetweenTwentyOneAndTwentyNine(n):
-                    return BetweenTwentyOneAndTwentyNine(minutes, doubleDigitNumberFormatter);
-                case int n when IsBetweenFortyAndFiftyNine(n):
-                    return BetweenFortyAndFiftyNine(minutes, doubleDigitNumberFormatter);
-                case int n when IsBetweenThirtyOneAndThirtyNine(n):
-                    return BetweenThirtyOneAndThirtyNine(minutes, doubleDigitNumberFormatter);
-            }
-            return string.Empty;
-        }
     }
 
     public class Minutes
@@ -114,27 +85,15 @@ namespace TimeToSpeech.Application
             this.minutes = minutes;
         }
 
-        public override string ToString()
-        {
-            if (IsTwentyOrLess(minutes) || IsThirty(minutes)) return TwentyOrLess(minutes, FormatterFunc);
-            if (IsBetweenTwentyOneAndTwentyNine(minutes)) return BetweenTwentyOneAndTwentyNine(minutes, FormatterFunc);
-            if (IsBetweenThirtyOneAndThirtyNine(minutes)) return BetweenThirtyOneAndThirtyNine(minutes, FormatterFunc);
-            return BetweenFortyAndFiftyNine(minutes, FormatterFunc);
-        }
+        public override string ToString() => IsThirtyOrLess(minutes) ? 
+            $"{Formatter(minutes)} past" : 
+            $"{Formatter(60 - minutes)} to";
 
+        private Func<int, bool> IsThirtyOrLess => (int i) => i < 31;
 
-        private Func<int, bool> IsTwentyOrLess => (int i) => i < 21;
-        private Func<int, bool> IsBetweenTwentyOneAndTwentyNine => (int i) => i > 20 && i < 30;
-        private Func<int, bool> IsThirty => (int i) => i == 30;
-        private Func<int, bool> IsBetweenThirtyOneAndThirtyNine => (int i) => i > 30 && i < 40;
-
-        private Func<int, Func<int, string>, string> TwentyOrLess => (minutes, formatter) => $"{formatter(minutes)} past";
-        private Func<int, Func<int, string>, string> BetweenTwentyOneAndTwentyNine => (minutes, formatter) => $"{formatter(minutes)} past";
-        private Func<int, Func<int, string>, string> BetweenThirtyOneAndThirtyNine => (minutes, formatter) => $"{formatter(60 - minutes)} to";
-        private Func<int, Func<int, string>, string> BetweenFortyAndFiftyNine => (minutes, formatter) => $"{formatter(60 - minutes)} to";
-
-        private Func<int, string> FormatterFunc => (int i) => _numberToTextDictionary.ContainsKey(i) ?
-        $"{_numberToTextDictionary[i]}" : $"{_numberToTextDictionary[i - i % 10]} {_numberToTextDictionary[i % 10].ToLowerInvariant()}";
+        private Func<int, string> Formatter => (int i) => _numberToTextDictionary.ContainsKey(i) ?
+            $"{_numberToTextDictionary[i]}" : 
+            $"{_numberToTextDictionary[i - i % 10]} {_numberToTextDictionary[i % 10].ToLowerInvariant()}";
     }
 
 }
