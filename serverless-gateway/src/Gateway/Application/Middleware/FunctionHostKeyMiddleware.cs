@@ -14,7 +14,7 @@ namespace Gateway.Application.Middleware
             _secretsProvider = secretsProvider;
         }
 
-        public override async Task InvokeAsync(Context httpContext)
+        public override async Task InvokeAsync(IContext httpContext)
         {
             var key = await _secretsProvider.Get($"{httpContext.DownstreamKey}-functionHostKey");
             httpContext.DownstreamRequest.Headers.Add(FunctionHostHeaderKey, key);

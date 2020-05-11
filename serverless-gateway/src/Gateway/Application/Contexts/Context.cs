@@ -6,11 +6,18 @@ using Gateway.Application.Interfaces;
 
 namespace Gateway.Application.Contexts
 {
-    public class Context
+    public class Context : IContext
     {
         private readonly IConfigurationProvider _configurationProvider;
-        public readonly string DownstreamKey;
+        public string DownstreamKey { get; }
+
         public HttpClient HttpClient { get; }
+
+        public HttpRequestMessage Request { get; }
+
+        public HttpRequestMessage DownstreamRequest { get; }
+
+        public IDictionary<string, string> Properties { get; }
 
         public Context(HttpRequestMessage request, IConfigurationProvider configurationProvider,
             string key, HttpClient httpClient)
@@ -27,10 +34,6 @@ namespace Gateway.Application.Contexts
             DownstreamKey = key;
             HttpClient = httpClient;
         }
-
-        public HttpRequestMessage Request { get; }
-        public HttpRequestMessage DownstreamRequest { get; }
-        public IDictionary<string, string> Properties { get; }
 
         public async Task<HttpResponseMessage> SendAsync()
         {

@@ -11,7 +11,7 @@ namespace Gateway.Application.Middleware
             _secretsProvider = secretsProvider;
         }
 
-        public CorrelationIdMiddleware CorrelationId() => new CorrelationIdMiddleware();
-        public FunctionHostKeyMiddleware FunctionHostKey() => new FunctionHostKeyMiddleware(_secretsProvider);
+        public MiddlewareBase CorrelationId() => new CorrelationIdMiddleware();
+        public MiddlewareBase FunctionHostKey() => new FunctionHostKeyMiddleware(_secretsProvider);
     }
 }

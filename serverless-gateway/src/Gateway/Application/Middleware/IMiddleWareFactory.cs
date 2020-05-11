@@ -1,10 +1,8 @@
-﻿using Gateway.Application.Middleware;
-
-namespace Gateway.Application.Interfaces
+﻿namespace Gateway.Application.Middleware
 {
     public interface IMiddlewareFactory
     {
-        CorrelationIdMiddleware CorrelationId();
-        FunctionHostKeyMiddleware FunctionHostKey();
+        MiddlewareBase CorrelationId();
+        MiddlewareBase FunctionHostKey();
     }
 }

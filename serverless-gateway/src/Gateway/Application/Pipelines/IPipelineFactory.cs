@@ -1,6 +1,4 @@
-using Gateway.Application.Pipelines;
-
-namespace Gateway.Application.Interfaces
+namespace Gateway.Application.Pipelines
 {
     public interface IPipelineFactory
     {

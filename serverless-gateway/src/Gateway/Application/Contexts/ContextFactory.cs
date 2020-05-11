@@ -14,7 +14,7 @@ namespace Gateway.Application.Contexts
             _httpClient = httpClient;
         }
 
-        public Context Create(string key, HttpRequestMessage req) =>
+        public IContext Create(string key, HttpRequestMessage req) =>
             new Context(req, _config, key, _httpClient);
     }
 }

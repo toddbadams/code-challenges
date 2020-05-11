@@ -33,7 +33,11 @@ x-jwt-iat: 1516239022
 ```
 
 ## Middleware
-Each pipeline constists of a number of middleware operations that are run squentially against the incomming request to form the downstream request. The `MiddlewareFactory` is used to create specific middelware instances.
+Each pipeline constists of a number of middleware operations that are run squentially against the incomming request to form the downstream request. The `MiddlewareFactory` is used to create specific middelware instances. The middleware can be created and invoked as:
+
+``` c-sharp
+     middlewareFactory.CorrelationId().Invoke(context);
+``` 
 
 ### Correlation Id Middleware
 The `CorrelationIdMiddleware` class reads an incoming header `X-Request-ID` and applies that to the downstream request. If the header is absent a GUID value is generated.

@@ -1,4 +1,5 @@
 using Gateway.Application.Interfaces;
+using Gateway.Application.Middleware;
 
 namespace Gateway.Application.Pipelines
 {
