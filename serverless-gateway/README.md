@@ -39,6 +39,8 @@ Each pipeline constists of a number of middleware operations that are run squent
      middlewareFactory.CorrelationId().Invoke(context);
 ``` 
 
+The following two middeware classes have been created, and other can be added to suite the needs of downstream services. 
+
 ### Correlation Id Middleware
 The `CorrelationIdMiddleware` class reads an incoming header `X-Request-ID` and applies that to the downstream request. If the header is absent a GUID value is generated.
 
