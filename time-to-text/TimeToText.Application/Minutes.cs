@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TimeToSpeech.Application
 {
-    internal class Minutes
+    internal readonly struct Minutes
     {
         private readonly string _minutes;
         private static readonly IDictionary<int, string> NumberToTextDictionary = new Dictionary<int, string>
@@ -15,9 +15,9 @@ namespace TimeToSpeech.Application
             {20, "Twenty"}, {30, "Half"}, {40, "Forty"}, {50, "Fifty"}
         };
 
-        public Minutes(int minutes)
+        public Minutes(int minutes) : this()
         {
-            this._minutes = IsThirtyOrLess(minutes) ?
+            _minutes = IsThirtyOrLess(minutes) ?
                 $"{Formatter(minutes)} past" :
                 $"{Formatter(60 - minutes)} to";
         }
@@ -26,7 +26,7 @@ namespace TimeToSpeech.Application
 
         private static Func<int, bool> IsThirtyOrLess => (int i) => i < 31;
 
-        private Func<int, string> Formatter => (int i) => NumberToTextDictionary.ContainsKey(i) ?
+        private static Func<int, string> Formatter => (int i) => NumberToTextDictionary.ContainsKey(i) ?
             $"{NumberToTextDictionary[i]}" :
             $"{NumberToTextDictionary[i - i % 10]} {NumberToTextDictionary[i % 10].ToLowerInvariant()}";
     }

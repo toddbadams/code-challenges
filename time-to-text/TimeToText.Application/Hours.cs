@@ -2,7 +2,7 @@
 
 namespace TimeToSpeech.Application
 {
-    internal class Hours
+    internal readonly struct Hours
     {
         private readonly string _hours;
         private static readonly IDictionary<int, string> NumberToTextDictionary = new Dictionary<int, string>

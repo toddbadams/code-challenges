@@ -32,13 +32,25 @@ x-jwt-name: John Doe
 x-jwt-iat: 1516239022
 ```
 
+## Middleware
+Each pipeline constists of a number of middleware operations that are run squentially against the incomming request to form the downstream request. The `MiddlewareFactory` is used to create specific middelware instances.
 
-## Correlation
-Reads an incoming header `X-Request-ID` and applies that to the downstream request. If the header is absent a GUID value is generated.
+### Correlation Id Middleware
+The `CorrelationIdMiddleware` class reads an incoming header `X-Request-ID` and applies that to the downstream request. If the header is absent a GUID value is generated.
 
 ```
 X-Request-ID: 94836156-78ac-4b9d-9beb-01786f975f12
 ```
+
+### Function Host Key Middleware
+Azure Functions provide protected access to HTTP triggered functions by means of authorization keys. Each function has an authorization level set as an attribute; anonymous requires no API key, function requires a function specific API key. 
+
+The `FunctionHostKeyMiddleware` class adds the specific downstream function authoriziation key as a header, for example:
+
+```
+x-functions-key: VyEOe9oIHkIz6sj+Are3ffHcP7ptHKAidUAxgDMkdSSaYuGDraek5Q==
+```
+
 
 ## Routing
 Routes incoming requests to a downstream service. 

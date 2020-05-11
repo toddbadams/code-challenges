@@ -4,6 +4,10 @@ using Gateway.Application.Contexts;
 
 namespace Gateway.Application.Middleware
 {
+    /// <summary>
+    /// Reads an incoming header `X-Request-ID` and applies that to the downstream request.
+    /// If the header is absent a GUID value is generated.
+    /// </summary>
     public class CorrelationIdMiddleware : MiddlewareBase
     {
         private const string Header = "Request-Id";
