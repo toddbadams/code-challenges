@@ -2,10 +2,10 @@
 
 namespace TimeToSpeech.Application
 {
-    public class Hours
+    internal class Hours
     {
-        private readonly int hours;
-        private readonly IDictionary<int, string> numberToTextDictionary = new Dictionary<int, string>
+        private readonly string _hours;
+        private static readonly IDictionary<int, string> NumberToTextDictionary = new Dictionary<int, string>
         {
             {0, "Midnight"}, {1, "One"}, {2, "Two"}, {3, "Three"}, {4, "Four"}, {5, "Five"},
             {6, "Six"}, {7, "Seven"}, {8, "Eight"}, {9, "Nine"}, {10, "Ten"},
@@ -14,9 +14,9 @@ namespace TimeToSpeech.Application
 
         public Hours(int hours)
         {
-            this.hours = hours;
+            _hours = NumberToTextDictionary[hours > 12 && hours < 24 ? hours - 12 : hours];
         }
 
-        public override string ToString() => numberToTextDictionary[hours > 12  && hours < 24 ? hours - 12 : hours];
+        public override string ToString() => _hours;
     }
 }

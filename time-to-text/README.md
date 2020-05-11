@@ -3,7 +3,7 @@
 Given a time of day, convert it to human-readable text.
 
 ### Console application
-Write a command-line program that returns the current time as human-readable text.
+Write a command-line program that returns the current time as human-readable text.  Use the following test cases to validate the code.
 
 | Numeric Time | Text |
 |--------------|------|
@@ -32,6 +32,14 @@ Write a command-line program that returns the current time as human-readable tex
 | 13:35 | Twenty five to two |
 | 13:55 | Five to two |
 | 23:55 | Five to midnight |
+| null | Invalid format, should be [hh][mm] or [hh]:[mm] |
+| "" | Invalid format, should be [hh][mm] or [hh]:[mm] |
+| 240 0 | Invalid format, should be [hh][mm] or [hh]:[mm] |
+| fred | Invalid format, should be [hh][mm] or [hh]:[mm] |
+| 2500 | Invalid format, should be [hh][mm] or [hh]:[mm] |
+| 25:00 | Invalid format, should be [hh][mm] or [hh]:[mm] |
+| 0060 | Invalid format, should be [hh][mm] or [hh]:[mm] |
+| 24:01 | Invalid format, should be [hh][mm] or [hh]:[mm] |
 
 ### Arbitrary time
 Allow the command to take an arbitrary Numeric Time. Return an invalid message when the time is not well formatted.  Permitted time entries may or may not include a colon and may or may not have leading zeros.

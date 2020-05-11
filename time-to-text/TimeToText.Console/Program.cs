@@ -3,11 +3,11 @@ using TimeToSpeech.Application;
 
 namespace TimeToSpeech.Console
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            System.Console.Write(new WrittenTimeProcessor().Process(args == null || args.Length == 0
+            System.Console.Write(new Time(args == null || args.Length == 0
                 ? DateTime.Now.ToString("hh:mm")
                 : args[0]));
         }

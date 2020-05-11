@@ -7,13 +7,6 @@ namespace TimeToSpeech.Tests
 
     public class WrittenTimeProcessorTest
     {
-        private readonly WrittenTimeProcessor _processor;
-
-        public WrittenTimeProcessorTest()
-        {
-            _processor = new WrittenTimeProcessor();
-        }
-
         [Theory]
         [InlineData(null)]
         [InlineData("")]
@@ -25,7 +18,7 @@ namespace TimeToSpeech.Tests
         [InlineData("24:01")]
         public void Process_Should_Return_Invalid_When_Time_Is_Not_Well_Formed(string time)
         {
-            _processor.Process(time).Should().Be("Invalid format, should be [hh][mm] or [hh]:[mm]");
+            (new Time(time).ToString()).Should().Be("Invalid format, should be [hh][mm] or [hh]:[mm]");
         }
 
         [Theory]
@@ -58,7 +51,7 @@ namespace TimeToSpeech.Tests
         [InlineData("23:55", "Five to midnight")]
         public void Process_Should_Return_Valid_Time_When_Time_Is_Well_Formed(string time, string expected)
         {
-            _processor.Process(time).Should().Be(expected);
+            (new Time(time).ToString()).Should().Be(expected);
         }
     }
 }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace TimeToSpeech.Application
 {
-    public class Minutes
+    internal class Minutes
     {
-        private readonly int minutes;
-        private readonly IDictionary<int, string> numberToTextDictionary = new Dictionary<int, string>
+        private readonly string _minutes;
+        private static readonly IDictionary<int, string> NumberToTextDictionary = new Dictionary<int, string>
         {
             {1, "One"}, {2, "Two"}, {3, "Three"}, {4, "Four"}, {5, "Five"},
             {6, "Six"}, {7, "Seven"}, {8, "Eight"}, {9, "Nine"}, {10, "Ten"},
@@ -17,17 +17,17 @@ namespace TimeToSpeech.Application
 
         public Minutes(int minutes)
         {
-            this.minutes = minutes;
+            this._minutes = IsThirtyOrLess(minutes) ?
+                $"{Formatter(minutes)} past" :
+                $"{Formatter(60 - minutes)} to";
         }
 
-        public override string ToString() => IsThirtyOrLess(minutes) ?
-            $"{Formatter(minutes)} past" :
-            $"{Formatter(60 - minutes)} to";
+        public override string ToString() => _minutes;
 
-        private Func<int, bool> IsThirtyOrLess => (int i) => i < 31;
+        private static Func<int, bool> IsThirtyOrLess => (int i) => i < 31;
 
-        private Func<int, string> Formatter => (int i) => numberToTextDictionary.ContainsKey(i) ?
-            $"{numberToTextDictionary[i]}" :
-            $"{numberToTextDictionary[i - i % 10]} {numberToTextDictionary[i % 10].ToLowerInvariant()}";
+        private Func<int, string> Formatter => (int i) => NumberToTextDictionary.ContainsKey(i) ?
+            $"{NumberToTextDictionary[i]}" :
+            $"{NumberToTextDictionary[i - i % 10]} {NumberToTextDictionary[i % 10].ToLowerInvariant()}";
     }
 }
