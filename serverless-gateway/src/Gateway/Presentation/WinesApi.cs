@@ -1,6 +1,5 @@
 using System.Net.Http;
 using System.Threading.Tasks;
-using Gateway.Application.Interfaces;
 using Gateway.Application.Pipelines;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;

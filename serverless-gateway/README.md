@@ -1,35 +1,88 @@
 
+[Microservices Architecture](https://microservices.io/patterns/apigateway.html) defines the gateway pattern as a means for clients of the architecture to use individual services. 
+
 
 # Azure functions serverless gateway
 
-A simple gateway pattern using pipelines and middleware to call downstream microservices.
+As a proof of concept this project creates a gateway pattern using Azure serverless tehcnonolgy (Function Apps).  
 
-## Authorization
+This is accomplished by creating a single Azure Function App with an API class for each downstream service. For example `WinesApi` takes incomming a `HttpRequestMessage` and passes that to the pipeline with a name (aka key).  The key is used as a convention based look up onto a configuration store to retrieve the location of the downstream service. 
 
-Claims based authorization using [JWT](https://jwt.io/introduction/).  The incomming authorization token has it's signature verified, and expresses all claims as headers to the downstream service.
+``` csharp
+public class WinesApi
+    {
+        private const string Name = "wines";
+        private readonly Pipeline _pipeline;
 
-### Incoming authorization header
+        public WinesApi(IPipelineFactory pipelineFactory)
+        {
+            _pipeline = pipelineFactory.Authorized();
+        }
 
-``` json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhNzZjMzcxYy01MzU0LTQ0ZjUtYTljZC01ZWNiZDQ2NGQ1ODIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.zM1cC8DaLEmP1KB0QKP8u5nL9u_sa2Z-Ce8oVsZXsag
+        [FunctionName(Name + "-get")]
+        public async Task<HttpResponseMessage> Get(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = Name + "/{wineId?}")]
+            HttpRequestMessage req) => await _pipeline.ExecuteAsync(Name, req);
+
+        [FunctionName(Name + "-post")]
+        public async Task<HttpResponseMessage> Post(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = Name)]
+            HttpRequestMessage req) => await _pipeline.ExecuteAsync(Name, req);
+
+        [FunctionName(Name + "-put")]
+        public async Task<HttpResponseMessage> Put(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = Name + "/{wineId}")]
+            HttpRequestMessage req) => await _pipeline.ExecuteAsync(Name, req);
+
+        [FunctionName(Name + "-delete")]
+        public async Task<HttpResponseMessage> Delete(
+            [HttpTrigger(AuthorizationLevel.Anonymous,  "delete", Route = Name + "/{wineId}")]
+            HttpRequestMessage req) => await _pipeline.ExecuteAsync(Name, req);
+    }
 ```
 
-this has the following payload:
+The approach creates a downstream request and then uses a pipeline to process the incomming request and build up the downstream request.
 
-``` json
-{
-  "sub": "a76c371c-5354-44f5-a9cd-5ecbd464d582",
-  "name": "John Doe",
-  "iat": 1516239022
-}
+## Pipeline
+A pipeline is a set of middleware that is run one after another. Each instance of the pipeline registers the middleware to run as:
+
+``` csharp
+ public class AuthorizedPipeline : Pipeline
+    {
+        public AuthorizedPipeline(IContextFactory contextFactory, IMiddlewareFactory middlewareFactory) : base(contextFactory)
+        {
+            Register(middlewareFactory.CorrelationId());
+            Register(middlewareFactory.FunctionHostKey());
+        }
+    }
 ```
-### Downstream headers
-The incoming claims are expressed as headers in the downstream request as:
 
-``` json
-x-jwt-sub: a76c371c-5354-44f5-a9cd-5ecbd464d582
-x-jwt-name: John Doe
-x-jwt-iat: 1516239022
+The pipline baseclass then allows it to be executed as:
+
+``` csharp
+        public async Task<HttpResponseMessage> ExecuteAsync(string key, HttpRequestMessage req)
+        {
+            if (!_pipeline.Any()) throw new MiddlewareException();
+
+            // create a context that is used throughout the pipeline
+            var context = _contextFactory.Create(key, req);
+
+            try
+            {
+                foreach (var middleware in _pipeline)
+                {
+                    // the the middleware on the context
+                    await middleware.InvokeAsync(context);
+                }
+            }
+            catch (Exception e)
+            {
+                return context?.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+            }
+
+            return await context.SendAsync();
+        }
+
 ```
 
 ## Middleware
@@ -76,22 +129,31 @@ The downstream service configuration is given by the string array `"wines-v1", "
 - `wines-v2-port`: 80
 - `wines-v2-event`: true  // enables event logging
 
-``` csharp
-    public class WinesApi
-    {
-        private readonly IGatewayProcessor _gatewayProcessor;
 
-        public WinesApi(IGatewayProcessor gatewayProcessor)
-        {
-            this._gatewayProcessor = gatewayProcessor;
-        }
+## Authorization (to be done, not yet coded)
 
-        [FunctionName("wines")]
-        public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "wines/{wineId?}")] HttpRequest req)
-        {
-           return await _gatewayProcessor.ProcessAsync(req, new []{"wines-v1", "wines-v2" });
-        }
-    }
+Claims based authorization using [JWT](https://jwt.io/introduction/).  The incomming authorization token has it's signature verified, and expresses all claims as headers to the downstream service.
+
+### Incoming authorization header
+
+``` json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhNzZjMzcxYy01MzU0LTQ0ZjUtYTljZC01ZWNiZDQ2NGQ1ODIiLCJuYW1lIjoiSm9obiBEb2UiLCJpYXQiOjE1MTYyMzkwMjJ9.zM1cC8DaLEmP1KB0QKP8u5nL9u_sa2Z-Ce8oVsZXsag
 ```
 
+this has the following payload:
+
+``` json
+{
+  "sub": "a76c371c-5354-44f5-a9cd-5ecbd464d582",
+  "name": "John Doe",
+  "iat": 1516239022
+}
+```
+### Downstream headers
+The incoming claims are expressed as headers in the downstream request as:
+
+``` json
+x-jwt-sub: a76c371c-5354-44f5-a9cd-5ecbd464d582
+x-jwt-name: John Doe
+x-jwt-iat: 1516239022
+```
