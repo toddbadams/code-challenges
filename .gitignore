@@ -4,3 +4,9 @@
 .vs/slnx.sqlite
 
 .vs/VSWorkspaceState.json
+
+iot/src/RefrigeratedTruck/obj/
+
+iot/src/Simulator/.vs/
+
+iot/src/Simulator/Simulator/obj/
