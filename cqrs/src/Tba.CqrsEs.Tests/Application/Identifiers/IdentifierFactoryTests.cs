@@ -1,9 +1,8 @@
 using FluentAssertions;
-using Tba.CqrsEs.Application;
-using Tba.CqrsEs.Application.Interfaces;
+using Tba.CqrsEs.Application.Identifiers;
 using Xunit;
 
-namespace Tba.CqrsEs.Tests
+namespace Tba.CqrsEs.Tests.Application.Identifiers
 {
     public class IdentifierFactoryTests
     {

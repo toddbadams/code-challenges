@@ -7,6 +7,7 @@ using Microsoft.Azure.WebJobs.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Tba.CqrsEs.Application;
 using Tba.CqrsEs.Application.Commands;
+using Tba.CqrsEs.Application.Identifiers;
 using Tba.CqrsEs.Application.Interfaces;
 
 namespace Tba.CqrsEs

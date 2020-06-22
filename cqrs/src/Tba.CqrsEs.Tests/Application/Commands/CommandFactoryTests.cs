@@ -5,10 +5,11 @@ using Microsoft.Extensions.Primitives;
 using Moq;
 using Tba.CqrsEs.Application.Commands;
 using Tba.CqrsEs.Application.Commands.RequestBodies;
+using Tba.CqrsEs.Application.Identifiers;
 using Tba.CqrsEs.Application.Interfaces;
 using Xunit;
 
-namespace Tba.CqrsEs.Tests
+namespace Tba.CqrsEs.Tests.Application.Commands
 {
     public class CommandFactoryTests
     {

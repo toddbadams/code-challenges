@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.Extensions.Primitives;
 using Tba.CqrsEs.Application.Commands.RequestBodies;
+using Tba.CqrsEs.Application.Identifiers;
 using Tba.CqrsEs.Application.Interfaces;
 
 namespace Tba.CqrsEs.Application.Commands
