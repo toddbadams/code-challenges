@@ -10,3 +10,9 @@ iot/src/RefrigeratedTruck/obj/
 iot/src/Simulator/.vs/
 
 iot/src/Simulator/Simulator/obj/
+
+Terraform/Iaas/.terraform/
+
+*.tfstate
+
+*.backup
