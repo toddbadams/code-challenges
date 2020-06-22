@@ -1,4 +1,4 @@
-﻿namespace Tba.CqrsEs.Application.Interfaces
+﻿namespace Tba.CqrsEs.Application.Identifiers
 {
     public interface IIdentifierFactory
     {
