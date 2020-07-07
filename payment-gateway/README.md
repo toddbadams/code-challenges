@@ -47,7 +47,7 @@ Handles communication with client, no business logic
 Executes business logic — how to implement an activity
 
 - **Prechecks** - implement fraud checks prior to tokenization and authorization. Address verification, CVV, device id, large transactions, payer auth, high-risk countries, risk scoring.
-- **PCI Compliance** - monitors the message bus to ensure no PAN data is being shared
+- **PCI Compliance** - ensure no PAN data is being published to service bus
 - **Transactions Reporting** - listens to the message bus and creates projected views for transaction reports
 
 Define the layers of the architecture
