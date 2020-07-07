@@ -16,3 +16,21 @@ Terraform/Iaas/.terraform/
 *.tfstate
 
 *.backup
+
+algorithms/src/.vs/
+
+algorithms/src/CodilityLessons/bin/
+
+algorithms/src/CodilityLessons/obj/
+
+*.user
+
+price-calculator/src/PricingCalculator/.vs/
+
+price-calculator/src/PricingCalculator/PricingCalculator/bin/
+
+price-calculator/src/PricingCalculator/PricingCalculator/obj/
+
+price-calculator/src/PricingCalculator/PricingCalculatorTests/bin/
+
+price-calculator/src/PricingCalculator/PricingCalculatorTests/obj/
