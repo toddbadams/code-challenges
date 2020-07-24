@@ -6,8 +6,8 @@ namespace Tba.CqrsEs.Application.Commands.RequestBodies
 {
     public class CreateWineBody
     {
-        [Required, JsonProperty("wine")] public Wine Wine { get; set; }
+        [Required, JsonProperty("wine")] public WineBody Wine { get; set; }
 
-        [Required, JsonProperty("details")] public WineDetails Details { get; set; }
+        [Required, JsonProperty("details")] public WineDetailsBody Details { get; set; }
     }
 }

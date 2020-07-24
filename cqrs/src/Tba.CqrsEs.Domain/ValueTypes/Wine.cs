@@ -1,24 +1,34 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Tba.CqrsEs.Domain.Enums;
+﻿using Tba.CqrsEs.Domain.Enums;
 
 namespace Tba.CqrsEs.Domain.ValueTypes
 {
     public class Wine
     {
-        public string Name { get; set; }
+        public Wine(string name, string producer, string country, string region, string subRegion, string appellation, WineType type)
+        {
+            Name = name;
+            Producer = producer;
+            Country = country;
+            Region = region;
+            SubRegion = subRegion;
+            Appellation = appellation;
+            Type = type;
+        }
 
-        public string Producer { get; set; }
+        public string Name { get;  }
+
+        public string Producer { get;  }
+
+        public string Country { get;  }
+
+        public string Region { get;  }
+
+        public string SubRegion { get;  }
+
+        public string Appellation { get;  }
+
+        public WineType Type { get;  }
 
         public string WineName => $"{Producer} {Name}";
-
-        public string Country { get; set; }
-
-        public string Region { get; set; }
-
-        public string SubRegion { get; set; }
-
-        public string Appellation { get; set; }
-
-        public WineType Type { get; set; }
     }
 }

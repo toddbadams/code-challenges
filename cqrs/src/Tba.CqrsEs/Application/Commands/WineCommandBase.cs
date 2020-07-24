@@ -42,7 +42,11 @@ namespace Tba.CqrsEs.Application.Commands
                     }
                 };
 
-                // todo add headers
+                // add the incoming headers to the message
+                foreach (var (key, value) in _headers)
+                {
+                    message.UserProperties.Add(key, value);
+                }
 
                 return message;
             }

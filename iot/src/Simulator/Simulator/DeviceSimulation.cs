@@ -60,11 +60,7 @@ namespace Simulator
         /// convert current temperature and humidity to telemetry JSON
         /// </summary>
         private static string CreateJson(double temperature, double humidity) =>
-            JsonConvert.SerializeObject(new
-            {
-                temperature = temperature,
-                humidity = humidity
-            });
+            JsonConvert.SerializeObject(new { temperature, humidity });
 
         /// <summary>
         /// Generate Telemetry message containing JSON data for the specified values
