@@ -2,13 +2,17 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DataFactory.Application.Repositories;
+using DataFactory.Repositories;
 using Microsoft.Azure.Management.DataFactory;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest;
 
 namespace DataFactory.Services
 {
-    public class DataFactoryService : IDataFactoryService
+    public class DataFactoryRepository : IDataFactoryRepository
     {
         private readonly IDataFactoryManagementClient _client;
+        private readonly ISecretsRepository _secrets;
         private readonly IParameterFactory _parameters;
 
         private readonly string _resourceGroup;
@@ -17,20 +21,38 @@ namespace DataFactory.Services
         private readonly string _dataset;
         private readonly string _pipeline;
 
+        private const string AuthorityUrl = "https://login.windows.net/";
+        private const string ResourceUrl = "https://management.azure.com/";
+
         private const string PendingCreationProvisioningState = "PendingCreation";
         private const string ErrorPipelineStatus = "Error";
         private const string InProgressPipelineStatus = "InProgress";
         private const string QueuedPipelineStatus = "Queued";
 
-        public DataFactoryService(IDataFactoryManagementClient client, IConfigurationRepository configuration, IParameterFactory parameters)
+        public DataFactoryRepository(IDataFactoryManagementClient client, 
+            IConfigurationRepository configuration, 
+            ISecretsRepository secrets,
+            IParameterFactory parameters)
         {
             _client = client;
+            _secrets = secrets;
             _resourceGroup = configuration.ResourceGroup;
             _dataFactory = configuration.DataFactoryName;
             _storage = configuration.StorageAccountName;
             _dataset = configuration.DatasetName;
             _pipeline = configuration.PipelineName;
             _parameters = parameters;
+        }
+
+        public async Task<IDataFactoryManagementClient> CreateClient()
+        {
+            var context = new AuthenticationContext(AuthorityUrl + _secrets.TenantId);
+            var clientCredential = new ClientCredential(_secrets.ApplicationId, _secrets.AuthenticationKey);
+            var result = await context.AcquireTokenAsync(ResourceUrl, clientCredential);
+            return new DataFactoryManagementClient(new TokenCredentials(result.AccessToken))
+            {
+                SubscriptionId = _secrets.SubscriptionId
+            };
         }
 
         public void CreateDataFactory() =>

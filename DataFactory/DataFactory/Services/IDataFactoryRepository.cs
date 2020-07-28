@@ -2,7 +2,7 @@
 
 namespace DataFactory
 {
-    public interface IDataFactoryService
+    public interface IDataFactoryRepository
     {
         void CreateDataFactory();
         bool IsPendingCreation();

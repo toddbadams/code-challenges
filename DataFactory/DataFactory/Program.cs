@@ -16,7 +16,7 @@ namespace DataFactory
             IDataFactoryManagementClientService clientService = new DataFactoryManagementClientService(secrets);
 
             var client = clientService.CreateClient().Result;
-            var dfService = new DataFactoryService(client, null, null);
+            var dfService = new DataFactoryRepository(client, null, null);
             dfService.CreateDataFactory();
             while (dfService.IsPendingCreation())
             {
