@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>wine_libarary</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Aggregates\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Services\" />
+    <Folder Include="ValueObjects\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30223.230
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Refactoring", "Refactoring\Refactoring.csproj", "{5AF3A63E-48A5-42B1-B315-63574666658F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5AF3A63E-48A5-42B1-B315-63574666658F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AF3A63E-48A5-42B1-B315-63574666658F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AF3A63E-48A5-42B1-B315-63574666658F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AF3A63E-48A5-42B1-B315-63574666658F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {562D262D-CFC1-419B-9D95-A13351651874}
+	EndGlobalSection
+EndGlobal

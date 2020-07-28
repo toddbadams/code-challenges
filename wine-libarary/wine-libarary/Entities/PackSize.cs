@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace Tba.CqrsEs.Domain.Enums
+namespace wine_libarary
 {
     public enum PackSize
     {
