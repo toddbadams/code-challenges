@@ -1,0 +1,7 @@
+business_unit       = "fin"
+environment         = "dev"
+application_name    = "todd"
+region_name         = "uks"
+location            = "UK South"
+resource_group_name = "fin-dev-todd-rg-wus"
+key_vault_name      = "fin-dev-todd-kv-wus"
