@@ -6,11 +6,21 @@
 + Request 
   + **WineEntryRequest**
 + Response 204 
-  + array[**WineEntry**]
  
 ### List all [GET]
 + Response 200 
   + array[**WineEntry**]
+  
+## Cellars [/cellars]
+ 
+### Create [POST]
++ Request 
+  + **CellarRequest**
++ Response 204 
+ 
+### List all [GET]
++ Response 200 
+  + array[**Cellar**]
 
 ### WineEntryRequest
 + action: add (string) - add, sell, gift, lost, broken, consume, other
@@ -23,9 +33,9 @@
   
 ### WineEntry
 + vintage: 1982 (number) - year of harvest
-+ BottleSize: 750 (**BottleSize**) 
++ BottleSize: 750 (number) - size of bottle in milliliters
 + DutyStatus: IB (**DutyStatus**) 
-+ packSize: 6 (**PackSize**) 
++ packSize: 6 (number) - the number of bottles in the package
 + cellar: Home (**Cellar**) 
 + wine: (**Wine**) 
 
@@ -39,29 +49,30 @@
 ### Cellar 
 + title: Home (string) - a unique name for the cellar
 + accountRef: ADAT123 (string) - a unique account reference for the cellar
+  
+### CellarRequest
++ action: add (string) - add, close
++ title: Home (string) - a unique name for the cellar
++ accountRef: ADAT123 (string) - a unique account reference for the cellar
 
 ## Enumerations [/enumerations]
  
 ### List all [GET]
 + Response 200 
-    + body (array[EnumerationSet], fixed-type)
+    + array[EnumerationSet]
 
 ### EnumerationSet
-+ bottleSize: array[**BottleSize**], fixed-type
 + dutyStatus: array[**DutyStatus**], fixed-type
-+ packSize: array[**PackSize**], fixed-type
 + wineType: array[**WineType**], fixed-type
-
-### BottleSize 
-+ title: Half (string) - title of the bottle size
++ wineEntryAction: array[**WineEntryAction**], fixed-type
 
 ### DutyStatus 
-+ title: Duty Paid (string) - title of the duty status
-
-### PackSize 
-+ title: One (string) - title of the package size
++ title: Duty Paid (string) - title of the duty status: DP, IB
 
 ### WineType 
-+ title: Red (string) - title of the wine type
++ title: Red (string) - title of the wine type: red, white, sparking, orange, sweet
+
+### WineEntryAction 
++ title: add (string) - the action to apply to a wine entry: add, sell, gift, lost, broken, consume, other
 
 
