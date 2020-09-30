@@ -31,14 +31,14 @@
 The response is a JWT representing cellar claims.
  
 + header
-+ alg: HS256 (string) - the signing algorithm being used, which is HS256
-+ typ: JWT (string) - the type of the token, which is JWT
+  + alg: HS256 (string) - the signing algorithm being used, which is HS256
+  + typ: JWT (string) - the type of the token, which is JWT
 
 + payload
-+ sub: ADAT001 (string) - globally unique identifier for the claim principal.
-+ exp: 1601460689 (number) - identifies the expiration time on or after which the JWT MUST NOT be accepted for processing.
-+ jti: ba9a1fe80d6742b28b76a091fdf23ce4 (string) - provides a unique identifier for the JWT.
-+ cellar: (**Cellar**)
+  + sub: ADAT001 (string) - globally unique identifier for the claim principal.
+  + exp: 1601460689 (number) - identifies the expiration time on or after which the JWT MUST NOT be accepted for processing.
+  + jti: ba9a1fe80d6742b28b76a091fdf23ce4 (string) - provides a unique identifier for the JWT.
+  + cellar: (**Cellar**)
 
 ### Cellar 
 + title: Home (string) - a unique (url safe) name for the cellar
