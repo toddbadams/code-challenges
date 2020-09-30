@@ -9,7 +9,7 @@
     + **Cellar**
 + Response 204  
 
-### Create [PUT]
+### Update [PUT]
 + Request 
   + headers
     + Authorization: Bearer xyz... (**User JWT**)
@@ -57,18 +57,46 @@ The response is a JWT representing cellar claims.
 + Request 
   + headers
     + Authorization: Bearer xyz... (**User JWT**)
-    + WWW-Authorization: Bearer abc... (**Wine Entry Resource JWT**)
   + body
     + **WineEntry**
 + Response 204 
-+  
-### Create [PUT]
+  
+### sell [PUT]
 + Request 
   + headers
     + Authorization: Bearer xyz... (**User JWT**)
     + WWW-Authorization: Bearer abc... (**Wine Entry Resource JWT**)
   + body
-    + **WineEntryUpdate**
+    + packQuantity: 1 (number) - the number of packages
+    + price: 109.90 (number) - the selling price of each package
+    + action: sell
++ Response 204 
+
+  
+### dispose [PUT]
++ Request 
+  + headers
+    + Authorization: Bearer xyz... (**User JWT**)
+    + WWW-Authorization: Bearer abc... (**Wine Entry Resource JWT**)
+  + body
+    + packQuantity: 1 (number) - the number of packages
+    + reason: drank with friends (string) - reason to dispose
+    + action: dispose
++ Response 204 
+
+### moved to another cellar [PUT]
++ Request 
+  + headers
+    + Authorization: Bearer xyz... (**User JWT**)
+    + WWW-Authorization: Bearer abc... (**Wine Entry Resource JWT**)
+  + body
+    + packQuantity: 1 (number) - the number of packages
+    + reason: bringing home (string) - reason to move
+    + dutyPaid:  23.50 (number) - the amount of duty paid 
+    + Vat: 200.00 (number) - the amount of Vat paid
+    + packSize: 6 (number) - the number of bottles in the package of new cellar
+    + packQuantity: 1 (number) - the number of packages in the new cellar, total bottle count must equal moved quantity
+    + action: move
 + Response 204 
  
 ### List all [GET]
@@ -90,6 +118,7 @@ The response is a JWT representing cellar claims.
 + bottleSize: 750 (number) - size of bottle in milliliters
 + dutyStatus: IB (**DutyStatus**) 
 + packSize: 6 (number) - the number of bottles in the package
++ packQuantity: 1 (number) - the number of packages
 + cellar: Home (**Cellar**) 
 + wine: (**Wine**) 
 
@@ -114,10 +143,7 @@ The response is a JWT representing cellar claims.
   + exp: 1601460689 (number) - identifies the expiration time on or after which the JWT MUST NOT be accepted for processing.
   + jti: ba9a1fe80d6742b28b76a091fdf23ce4 (string) - provides a unique identifier for the JWT.
   + wineEntry: (**WineEntry**)
-  + actions: sell, gift, lost, broken, consume, other (string) - list of permitted wine entry actions
-
-### WineEntryAction 
-+ title: sell (string) - the action to apply to a wine entry: sell, gift, lost, broken, consume, other
+  + actions: sell, dispose, move (string) - list of permitted wine entry actions
 
 ## Enumerations [/enumerations]
  
