@@ -9,11 +9,10 @@
 ## EnumerationSet
 + Attributes
     + bottleSize: array[BottleSize], fixed-type
-    + bottleSize: array[BottleSize], fixed-type
-    + bottleSize: array[BottleSize], fixed-type
-    + bottleSize: array[BottleSize], fixed-type
-    + bottleSize: array[BottleSize], fixed-type
-    + 
+    + bottleSize: array[DutyStatus], fixed-type
+    + bottleSize: array[PackSize], fixed-type
+    + bottleSize: array[WineType], fixed-type
+
 ## BottleSize 
 + Attributes
     + id: 375 (number) - id of the bottle expressed in milliliters
