@@ -61,7 +61,7 @@ The response is a JWT representing cellar claims.
     + **WineEntry**
 + Response 204 
   
-### sell [PUT]
+### Sell [PUT /cellars/{title}/wineentries.sell]
 + Request 
   + headers
     + Authorization: Bearer xyz... (**User JWT**)
@@ -69,11 +69,10 @@ The response is a JWT representing cellar claims.
   + body
     + packQuantity: 1 (number) - the number of packages
     + price: 109.90 (number) - the selling price of each package
-    + action: sell
 + Response 204 
 
   
-### dispose [PUT]
+### dispose [PUT /cellars/{title}/wineentries.dispose]
 + Request 
   + headers
     + Authorization: Bearer xyz... (**User JWT**)
@@ -81,10 +80,9 @@ The response is a JWT representing cellar claims.
   + body
     + packQuantity: 1 (number) - the number of packages
     + reason: drank with friends (string) - reason to dispose
-    + action: dispose
 + Response 204 
 
-### moved to another cellar [PUT]
+### moved to another cellar [PUT /cellars/{title}/wineentries.move]
 + Request 
   + headers
     + Authorization: Bearer xyz... (**User JWT**)
@@ -96,13 +94,12 @@ The response is a JWT representing cellar claims.
     + Vat: 200.00 (number) - the amount of Vat paid
     + packSize: 6 (number) - the number of bottles in the package of new cellar
     + packQuantity: 1 (number) - the number of packages in the new cellar, total bottle count must equal moved quantity
-    + action: move
 + Response 204 
  
 ### List all [GET]
 + Request 
   + headers
-    + Authorization: Bearer xyz... (User JWT)
+    + Authorization: Bearer xyz... (**User JWT**)
 + Response 200 
   + body
     + array[**WineEntryResponse**]
