@@ -9,21 +9,16 @@
     + **Cellar**
 + Response 204  
 
-### Update [PUT]
+### Close [PUT /cellars.close]
 + Request 
   + headers
     + Authorization: Bearer xyz... (**User JWT**)
     + WWW-Authorization: Bearer abc... (**Cellar Resource JWT**)
-  + body
-    + **CellarUpdate**
 + Response 204 
  
 ### List all [GET]
 + Response 200 
   + array[**CellarResponse**]
-
-### CellarUpdate : Cellar
-+ action: (**CellarAction**) 
 
 ### CellarResponse
 + authorization: abc... (**Cellar Resource JWT**) - used to gain access to the cellar resource
@@ -40,15 +35,11 @@ The response is a JWT representing cellar claims.
   + exp: 1601460689 (number) - identifies the expiration time on or after which the JWT MUST NOT be accepted for processing.
   + jti: ba9a1fe80d6742b28b76a091fdf23ce4 (string) - provides a unique identifier for the JWT.
   + cellar: (**Cellar**)
-  + actions: update, close (string) - list of permitted cellar actions
+  + actions: close (string) - list of permitted cellar actions
 
 ### Cellar 
 + title: Home (string) - a unique (url safe) name for the cellar
 + accountRef: ADAT123 (string) - a unique account reference for the cellar
-
-### CellarAction 
-+ title: close (string) - the action to apply to a cellar entry: update, close
-
 
 
 # Wine Entries [/cellars/{title}/wineentries]
