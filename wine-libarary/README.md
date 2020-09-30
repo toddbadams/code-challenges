@@ -15,7 +15,7 @@
 ### List all [GET]
 + Response 200 
   + body
-    + array[**WineEntry**]
+    + array[**WineEntryResponse**]
   
 ## Cellars [/cellars]
  
@@ -30,7 +30,7 @@
  
 ### List all [GET]
 + Response 200 
-  + array[**Cellar**]
+  + array[**CellarResponse**]
 
 ### WineEntryRequest
 + action: add (**WineEntryAction**) 
@@ -40,15 +40,17 @@
 + packSize: 6 (**PackSize**) 
 + cellar: Home (**Cellar**) 
 + wine: (**Wine**) 
+
+### WineEntryResponse
++ authorization: abc... (**WineEntry Resource JWT**) - used to gain access to the wine entry resource
   
 ### WineEntry
 + vintage: 1982 (number) - year of harvest
-+ BottleSize: 750 (number) - size of bottle in milliliters
-+ DutyStatus: IB (**DutyStatus**) 
++ bottleSize: 750 (number) - size of bottle in milliliters
++ dutyStatus: IB (**DutyStatus**) 
 + packSize: 6 (number) - the number of bottles in the package
 + cellar: Home (**Cellar**) 
 + wine: (**Wine**) 
-+ authorization: abc... (**Resource JWT**) - used to gain access to the wine entry resource
 
 ### Wine 
 + title: Domaine Leroy Musigny Grand Cru, Chambolle-Musigny, Cote de Nuits, Burgundy, France Red (string) - producer + name + location + type  a unique title
@@ -57,15 +59,32 @@
 + producer: Domaine Leroy (string) - name of producer
 + type: Red (**WineType**) 
 
-### Cellar 
-+ title: Home (string) - a unique name for the cellar
-+ accountRef: ADAT123 (string) - a unique account reference for the cellar
-+ authorization: abc... (**Resource JWT**) - used to gain access to the cellar resource
   
 ### CellarRequest
 + action: add (**CellarAction**) 
 + title: Home (string) - a unique name for the cellar
++ accountRef: ADAT123 (string) - a unique account reference for the cellar 
+
+
+### CellarResponse
++ authorization: abc... (**Cellar Resource JWT**) - used to gain access to the cellar resource
+
+The response is a JWT representing cellar claims.
+ 
+#### header
++ alg: HS256 (string) - the signing algorithm being used, which is HS256
++ typ: JWT (string) - the type of the token, which is JWT
+
+### payload
++ sub: ADAT001 (string) - globally unique identifier for the claim principal.
++ exp: 1601460689 (number) - identifies the expiration time on or after which the JWT MUST NOT be accepted for processing.
++ jti: ba9a1fe80d6742b28b76a091fdf23ce4 (string) - provides a unique identifier for the JWT.
++ cellar: (**Cellar**)
+
+### Cellar 
++ title: Home (string) - a unique name for the cellar
 + accountRef: ADAT123 (string) - a unique account reference for the cellar
++ authorization: abc... (**Resource JWT**) - used to gain access to the cellar resource
 
 ## Enumerations [/enumerations]
  
