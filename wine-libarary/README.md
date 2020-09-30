@@ -17,21 +17,6 @@
   + body
     + array[**WineEntryResponse**]
   
-## Cellars [/cellars]
- 
-### Create [POST]
-+ Request 
-  + headers
-    + Authorization: Bearer xyz... (User JWT)
-    + WWW-Authorization: Bearer abc... (Resource JWT)
-  + body
-    + **CellarRequest**
-+ Response 204 
- 
-### List all [GET]
-+ Response 200 
-  + array[**CellarResponse**]
-
 ### WineEntryRequest
 + action: add (**WineEntryAction**) 
 + vintage: 1982 (number) - year of harvest
@@ -58,6 +43,24 @@
 + location: Musigny Grand Cru, Chambolle-Musigny, Cote de Nuits, Burgundy, France (string) - location hierarchy
 + producer: Domaine Leroy (string) - name of producer
 + type: Red (**WineType**) 
+
+
+  
+## Cellars [/cellars]
+ 
+### Create [POST]
++ Request 
+  + headers
+    + Authorization: Bearer xyz... (User JWT)
+    + WWW-Authorization: Bearer abc... (Resource JWT)
+  + body
+    + **CellarRequest**
++ Response 204 
+ 
+### List all [GET]
++ Response 200 
+  + array[**CellarResponse**]
+
 
   
 ### CellarRequest
