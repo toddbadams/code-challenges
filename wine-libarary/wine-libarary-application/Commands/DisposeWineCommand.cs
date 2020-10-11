@@ -5,12 +5,12 @@ using wine_libarary_application.Commands.RequestBodies;
 
 namespace wine_libarary_application.Commands
 {
-    public class UpdateWineCommand : CommandBase
+    public class DisposeWineCommand : CommandBase
     {
-        public UpdateWineCommand(string wineId, UpdateWineBody body, IDictionary<string, StringValues> headers) : base(wineId, headers)
+        public DisposeWineCommand(DisposeWineBody body, IDictionary<string, StringValues> headers) : base(headers)
         {
             Body = JsonConvert.SerializeObject(body);
-            EventType = "WineUpdated";
+            EventType = "WineDisposed";
             EventTypeVersion = "1";
         }
     }

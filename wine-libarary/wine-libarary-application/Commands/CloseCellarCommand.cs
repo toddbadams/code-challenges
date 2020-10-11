@@ -5,8 +5,10 @@ namespace wine_libarary_application.Commands
 {
     public class CloseCellarCommand : CommandBase
     {
-        public CloseCellarCommand(string wineId, IDictionary<string, StringValues> headers) : base(wineId, headers)
+        public CloseCellarCommand(IDictionary<string, StringValues> headers) : base(headers)
         {
+            EventType = "CellarClosed";
+            EventTypeVersion = "1";
         }
     }
 }

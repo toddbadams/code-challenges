@@ -26,7 +26,7 @@ namespace WL.PresentationCommands
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
             [ServiceBus("events", Connection = "TopicSend")] IAsyncCollector<Message> messages) =>
             await _requestProcessor.ProcessRequest(Name,
-                async () => _commandFactory.CreateCellarCommand(await _requestProcessor.ReadBodyAsync<CreateCellar>(req), req.Headers),
+                async () => _commandFactory.CreateCellarCommand(await _requestProcessor.ReadBodyAsync<Cellar>(req), req.Headers),
                 messages);
 
         [FunctionName(Name + "-close")]

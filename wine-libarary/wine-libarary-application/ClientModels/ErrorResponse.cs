@@ -2,11 +2,11 @@
 
 namespace wine_libarary_application.ClientModels
 {
-    public class ErrorResponse : AcceptedResponse
+    public class ErrorResponse 
     {
         [JsonProperty("message")] public string Message { get; }
 
-        public ErrorResponse(string orderId, int version, string message) : base(orderId, version)
+        public ErrorResponse(string message) 
         {
             Message = message;
         }

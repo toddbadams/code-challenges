@@ -22,29 +22,29 @@ namespace WL.PresentationCommands
             try
             {
                 var cmd = await func();
-                await messages.AddAsync(null); //cmd.Message);
-                var response = new AcceptedResponse(cmd.WineId, cmd.Version);
-                return new AcceptedResult(new Uri($"{name}/{response.Id}", UriKind.Relative), response);
+                await messages.AddAsync(cmd.Message);
+                var response = new AcceptedResponse(cmd.EventType, cmd.EventTypeVersion);
+                return new AcceptedResult(new Uri(name, UriKind.Relative), response);
             }
             catch (Exception)
             {
-                return new BadRequestObjectResult(new ErrorResponse(null, 0, "Failed to process request."));
+                return new BadRequestObjectResult(new ErrorResponse("Failed to process request."));
             }
         }
-
+        
         
         public async Task<IActionResult> ProcessRequest(string name, Func<CommandBase> func, IAsyncCollector<Message> messages)
         {
             try
             {
                 var cmd = func();
-                await messages.AddAsync(null); //cmd.Message);
-                var response = new AcceptedResponse(cmd.WineId, cmd.Version);
-                return new AcceptedResult(new Uri($"{name}/{response.Id}", UriKind.Relative), response);
+                await messages.AddAsync(cmd.Message);
+                var response = new AcceptedResponse(cmd.EventType, cmd.EventTypeVersion);
+                return new AcceptedResult(new Uri(name, UriKind.Relative), response);
             }
             catch (Exception)
             {
-                return new BadRequestObjectResult(new ErrorResponse(null, 0, "Failed to process request."));
+                return new BadRequestObjectResult(new ErrorResponse("Failed to process request."));
             }
         }
 

@@ -14,6 +14,8 @@ namespace WL.PresentationCommands
         private readonly ICommandFactory _commandFactory;
         private readonly IRequestProcessor _requestProcessor;
         private const string Name = "wines";
+        private const string TopicName = "events";
+        private const string SbConnection = "TopicSend";
 
         public WineApi(ICommandFactory commandFactory, IRequestProcessor requestProcessor)
         {
@@ -21,23 +23,36 @@ namespace WL.PresentationCommands
             _requestProcessor = requestProcessor;
         }
 
-        [FunctionName(Name + "-create")]
-        public async Task<IActionResult> Post(
+        [FunctionName(Name + "-enter")]
+        public async Task<IActionResult> Enter(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest req,
-            [ServiceBus("events", Connection = "TopicSend")] IAsyncCollector<Message> messages) =>
+            [ServiceBus(TopicName, Connection = SbConnection)] IAsyncCollector<Message> messages) =>
             await _requestProcessor.ProcessRequest(Name,
-                async () => _commandFactory.CreateWineEntryCommand(await _requestProcessor.ReadBodyAsync<CreateWineBody>(req), req.Headers),
+                async () => _commandFactory.EnterWineCommand(await _requestProcessor.ReadBodyAsync<WineEntry>(req), req.Headers),
                 messages);
 
         [FunctionName(Name + "-sell")]
-        public async Task<IActionResult> Put(
-            [HttpTrigger(AuthorizationLevel.Function, "put", Route = Name + "/{wineId}")] HttpRequest req,
-            string wineId,
-            [ServiceBus("events", Connection = "TopicSend")] IAsyncCollector<Message> messages) =>
+        public async Task<IActionResult> Sell(
+            [HttpTrigger(AuthorizationLevel.Function, "put", Route = Name + ".sell")] HttpRequest req,
+            [ServiceBus(TopicName, Connection = SbConnection)] IAsyncCollector<Message> messages) =>
             await _requestProcessor.ProcessRequest(Name,
-                async () => _commandFactory.UpdateWineCommand(wineId, await _requestProcessor.ReadBodyAsync<UpdateWineBody>(req), req.Headers),
+                async () => _commandFactory.SellWineCommand(await _requestProcessor.ReadBodyAsync<SellWineBody>(req), req.Headers),
                 messages);
 
-     
+        [FunctionName(Name + "-dispose")]
+        public async Task<IActionResult> Dispose(
+            [HttpTrigger(AuthorizationLevel.Function, "put", Route = Name + ".dispose")] HttpRequest req,
+            [ServiceBus(TopicName, Connection = SbConnection)] IAsyncCollector<Message> messages) =>
+            await _requestProcessor.ProcessRequest(Name,
+                async () => _commandFactory.DisposeWineCommand(await _requestProcessor.ReadBodyAsync<DisposeWineBody>(req), req.Headers),
+                messages);
+        
+        [FunctionName(Name + "-move")]
+        public async Task<IActionResult> Move(
+            [HttpTrigger(AuthorizationLevel.Function, "put", Route = Name + ".move")] HttpRequest req,
+            [ServiceBus(TopicName, Connection = SbConnection)] IAsyncCollector<Message> messages) =>
+            await _requestProcessor.ProcessRequest(Name,
+                async () => _commandFactory.MoveWineCommand(await _requestProcessor.ReadBodyAsync<MoveWineBody>(req), req.Headers),
+                messages);
     }
 }

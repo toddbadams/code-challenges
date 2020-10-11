@@ -5,12 +5,12 @@ using wine_libarary_application.Commands.RequestBodies;
 
 namespace wine_libarary_application.Commands
 {
-    public class CreateWineEntryCommand: CommandBase
+    public class MoveWineCommand : CommandBase
     {
-        public CreateWineEntryCommand(string wineId, CreateWineBody body, IDictionary<string, StringValues> headers) : base(wineId, headers)
+        public MoveWineCommand(MoveWineBody body, IDictionary<string, StringValues> headers) : base(headers)
         {
             Body = JsonConvert.SerializeObject(body);
-            EventType = "WineEntryCreated";
+            EventType = "WineMoved";
             EventTypeVersion = "1";
         }
     }

@@ -4,15 +4,14 @@ namespace wine_libarary_application.ClientModels
 {
     public class AcceptedResponse
     {
-        [JsonProperty("id")] public string Id { get; protected set; }
+        [JsonProperty("eventType")] public string EventType { get; protected set; }
 
-        [JsonProperty("version")] public int Version { get; }
+        [JsonProperty("eventTypeVersion")] public string EventTypeVersion { get; }
 
-        public AcceptedResponse(string id, int version)
+        public AcceptedResponse(string eventType, string eventTypeVersion)
         {
-            Version = version;
-            Id = id;
+            EventTypeVersion = eventTypeVersion;
+            EventType = eventType;
         }
-
     }
 }

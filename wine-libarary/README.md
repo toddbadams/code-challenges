@@ -106,6 +106,9 @@ A wine entry is a set of physical wine bottles that represent a single vintage/p
 + dutyStatus: IB (**string**) - DP, IB
 + packSize: 6 (number) - the number of bottles in the package
 + packQuantity: 1 (number) - the number of packages
++ unitCost: 54.68 (number) - the cost per bottle
++ acquiredOn: 1602422951 (number) - the date of purchase (unix timestamp)
++ acquiredFrom: Big Bobs Wine Shop (string) - the seller
 + cellar: Home (**Cellar**) 
 + wine: (**Wine**) 
 

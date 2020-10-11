@@ -7,10 +7,12 @@ namespace wine_libarary_application.Interfaces
 {
     public interface ICommandFactory
     {
-        CreateCellarCommand CreateCellarCommand(CreateCellar body, IDictionary<string, StringValues> headers);
+        CreateCellarCommand CreateCellarCommand(Cellar body, IDictionary<string, StringValues> headers);
         CloseCellarCommand CloseCellarCommand(IDictionary<string, StringValues> headers);
 
-        CreateWineEntryCommand CreateWineCommand(CreateWineBody body, IDictionary<string, StringValues> headers);
-        UpdateWineCommand UpdateWineCommand(string wineId, UpdateWineBody body, IDictionary<string, StringValues> headers);
+        EnterWineCommand EnterWineCommand(WineEntry body, IDictionary<string, StringValues> headers);
+        SellWineCommand SellWineCommand(SellWineBody body, IDictionary<string, StringValues> headers);
+        DisposeWineCommand DisposeWineCommand(DisposeWineBody body, IDictionary<string, StringValues> headers);
+        MoveWineCommand MoveWineCommand(MoveWineBody body, IDictionary<string, StringValues> headers);
     }
 }
