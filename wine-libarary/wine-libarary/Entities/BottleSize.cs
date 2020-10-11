@@ -1,6 +1,6 @@
 ﻿using System.Runtime.Serialization;
 
-namespace wine_libarary
+namespace wine_libarary.Entities
 {
     public enum BottleSize
     {

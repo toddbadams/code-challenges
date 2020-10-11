@@ -1,7 +1,6 @@
 ﻿using System;
-using wine_libarary;
 
-namespace WL.Domain.Entities
+namespace wine_libarary.Entities
 {
     public class Wine
     {

@@ -42,7 +42,9 @@ The response is a JWT representing cellar claims.
 + accountRef: ADAT123 (string) - a unique account reference for the cellar
 
 
-# Wine Entries [/cellars/{title}/wineentries]
+# Wine Entries [/cellars/{title}/wines]
+
+A wine entry is a set of physical wine bottles that represent a single vintage/production of a wine within a cellar.
  
 ### Create [POST]
 + Request 
@@ -52,7 +54,7 @@ The response is a JWT representing cellar claims.
     + **WineEntry**
 + Response 204 
   
-### Sell [PUT /cellars/{title}/wineentries.sell]
+### Sell [PUT /cellars/{title}/wines.sell]
 + Request 
   + headers
     + Authorization: Bearer xyz... (**User JWT**)
@@ -63,7 +65,7 @@ The response is a JWT representing cellar claims.
 + Response 204 
 
   
-### Dispose [PUT /cellars/{title}/wineentries.dispose]
+### Dispose [PUT /cellars/{title}/wines.dispose]
 + Request 
   + headers
     + Authorization: Bearer xyz... (**User JWT**)
@@ -73,7 +75,7 @@ The response is a JWT representing cellar claims.
     + reason: drank with friends (string) - reason to dispose
 + Response 204 
 
-### Move to another cellar [PUT /cellars/{title}/wineentries.move]
+### Move to another cellar [PUT /cellars/{title}/wines.move]
 + Request 
   + headers
     + Authorization: Bearer xyz... (**User JWT**)
@@ -87,7 +89,7 @@ The response is a JWT representing cellar claims.
     + packQuantity: 1 (number) - the number of packages in the new cellar, total bottle count must equal moved quantity
 + Response 204 
  
-### List all [GET]
+### List all [GET /cellars/{title}/wines]
 + Request 
   + headers
     + Authorization: Bearer xyz... (**User JWT**)
