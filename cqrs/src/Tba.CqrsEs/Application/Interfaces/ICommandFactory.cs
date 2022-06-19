@@ -8,6 +8,6 @@ namespace Tba.CqrsEs.Application.Interfaces
     public interface ICommandFactory
     {
         CreateWineTastingCommand CreateWineTastingCommand(CreateWineTastingBody body, IDictionary<string, StringValues> headers);
-        UpdateWineCommand UpdateWineCommand(string wineId, UpdateWineBody body, IDictionary<string, StringValues> headers);
+        UpdateWineTastingAppearanceCommand UpdateWineCommand(string wineId, UpdateWineTastingAppearanceBody body, IDictionary<string, StringValues> headers);
     }
 }

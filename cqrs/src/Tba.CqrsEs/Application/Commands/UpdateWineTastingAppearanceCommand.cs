@@ -5,12 +5,12 @@ using Tba.CqrsEs.Application.Commands.RequestBodies;
 
 namespace Tba.CqrsEs.Application.Commands
 {
-    public class UpdateWineCommand : WineCommandBase
+    public class UpdateWineTastingAppearanceCommand : WineCommandBase
     {
-        public UpdateWineCommand(string wineId, UpdateWineBody body, IDictionary<string, StringValues> headers) : base(wineId, headers)
+        public UpdateWineTastingAppearanceCommand(string wineId, UpdateWineTastingAppearanceBody body, IDictionary<string, StringValues> headers) : base(wineId, headers)
         {
             Body = JsonConvert.SerializeObject(body);
-            EventType = "WineUpdated";
+            EventType = "WineTastingAppearanceUpdated";
             EventTypeVersion = "1";
         }
     }

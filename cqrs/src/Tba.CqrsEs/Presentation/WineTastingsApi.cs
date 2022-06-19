@@ -29,7 +29,7 @@ namespace Tba.CqrsEs.Presentation
             _commandFactory = commandFactory;
         }
 
-        [FunctionName(Name + "-post")]
+        [FunctionName(Name + "-create")]
         public async Task<IActionResult> Post(
             [HttpTrigger(AuthorizationLevel.Function, "post", Route = Name)]
             HttpRequest req,
@@ -38,14 +38,14 @@ namespace Tba.CqrsEs.Presentation
                 async () => _commandFactory.CreateWineTastingCommand(await ReadBodyAsync<CreateWineTastingBody>(req), req.Headers),
                 messages);
 
-        [FunctionName(Name + "-put")]
+        [FunctionName(Name + "-update-appearance")]
         public async Task<IActionResult> Put(
             [HttpTrigger(AuthorizationLevel.Function, "put", Route = Name + "/{wineId}")]
             HttpRequest req,
             string wineId,
             [ServiceBus(ServiceBusQueueName, Connection = ServiceBusConnection)]
             IAsyncCollector<ServiceBusMessage> messages) => await ProcessRequest(
-                async () => _commandFactory.UpdateWineCommand(wineId, await ReadBodyAsync<UpdateWineBody>(req), req.Headers),
+                async () => _commandFactory.UpdateWineCommand(wineId, await ReadBodyAsync<UpdateWineTastingAppearanceBody>(req), req.Headers),
                 messages);
 
         private static async Task<IActionResult> ProcessRequest(Func<Task<WineCommandBase>> func, IAsyncCollector<ServiceBusMessage> messages)
