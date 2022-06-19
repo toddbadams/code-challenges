@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Primitives;
+using System;
 using System.Collections.Generic;
-using Microsoft.Extensions.Primitives;
 using Tba.CqrsEs.Application.Commands.RequestBodies;
 using Tba.CqrsEs.Application.Identifiers;
 using Tba.CqrsEs.Application.Interfaces;
@@ -16,14 +16,14 @@ namespace Tba.CqrsEs.Application.Commands
             _identifierFactory = identifierFactory;
         }
 
-        public CreateWineCommand CreateWineCommand(CreateWineBody body, IDictionary<string, StringValues> headers) =>
-            new CreateWineCommand(_identifierFactory.Create(),
-                body ?? throw new ArgumentNullException(nameof(CreateWineBody)),
+        public CreateWineTastingCommand CreateWineTastingCommand(CreateWineTastingBody body, IDictionary<string, StringValues> headers) =>
+            new CreateWineTastingCommand(_identifierFactory.Create(),
+                body ?? throw new ArgumentNullException(nameof(CreateWineTastingBody)),
                 headers ?? throw new ArgumentNullException(nameof(IDictionary<string, StringValues>)));
 
         public UpdateWineCommand UpdateWineCommand(string wineId, UpdateWineBody body, IDictionary<string, StringValues> headers) =>
-            new UpdateWineCommand(wineId ?? throw new ArgumentNullException(), 
-                body ?? throw new ArgumentNullException(nameof(UpdateWineBody)), 
+            new UpdateWineCommand(wineId ?? throw new ArgumentNullException(),
+                body ?? throw new ArgumentNullException(nameof(UpdateWineBody)),
                 headers ?? throw new ArgumentNullException(nameof(IDictionary<string, StringValues>)));
     }
 }

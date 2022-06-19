@@ -1,14 +1,13 @@
-﻿using System;
-using System.Reflection;
-using AzureFunctions.Extensions.Swashbuckle;
-using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+﻿using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Tba.CqrsEs.Application;
+using System;
 using Tba.CqrsEs.Application.Commands;
 using Tba.CqrsEs.Application.Identifiers;
 using Tba.CqrsEs.Application.Interfaces;
+
+[assembly: FunctionsStartup(typeof(Tba.CqrsEs.Startup))]
 
 namespace Tba.CqrsEs
 {
@@ -16,7 +15,7 @@ namespace Tba.CqrsEs
     {
         public void Configure(IWebJobsBuilder builder)
         {
-            builder.AddSwashBuckle(Assembly.GetExecutingAssembly());
+            
             Configure(new FunctionsHostBuilder(builder.Services));
         }
 

@@ -1,23 +1,27 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
-using Tba.CqrsEs.Domain.Enums;
+﻿using Tba.CqrsEs.Domain.Enums;
 
 namespace Tba.CqrsEs.Domain.ValueTypes
 {
     public class Wine
     {
-        [Required, JsonProperty("name")] public string Name { get; set; }
+        public Wine(string name, string producer, string country, string region, string subRegion, string appellation, WineType type)
+        {
+            Name = name;
+            Producer = producer;
+            Country = country;
+            Region = region;
+            SubRegion = subRegion;
+            Appellation = appellation;
+            Type = type;
+        }
 
-        [Required, JsonProperty("producer")] public string Producer { get; set; }
-
-        [Required, JsonProperty("country")] public string Country { get; set; }
-
-        [Required, JsonProperty("region")] public string Region { get; set; }
-
-        [JsonProperty("subRegion")] public string SubRegion { get; set; }
-
-        [JsonProperty("appellation")] public string Appellation { get; set; }
-
-        [Required, JsonProperty("type")] public WineType Type { get; set; }
+        public string Name { get; }
+        public string Producer { get; }
+        public string Country { get; }
+        public string Region { get; }
+        public string SubRegion { get; }
+        public string Appellation { get; }
+        public WineType Type { get; }
+        public string WineName => $"{Producer} {Name}";
     }
 }

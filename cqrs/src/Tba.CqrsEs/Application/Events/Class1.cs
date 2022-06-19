@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Tba.CqrsEs.Application.Events
+﻿namespace Tba.CqrsEs.Application.Events
 {
     public interface IEventFactory
     {

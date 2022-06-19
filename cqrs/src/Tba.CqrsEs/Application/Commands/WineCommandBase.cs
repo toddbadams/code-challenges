@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Azure.Messaging.ServiceBus;
+using Microsoft.Extensions.Primitives;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.Azure.ServiceBus;
-using Microsoft.Extensions.Primitives;
 
 namespace Tba.CqrsEs.Application.Commands
 {
@@ -14,7 +14,7 @@ namespace Tba.CqrsEs.Application.Commands
         protected string EventType { private get; set; }
         protected string EventTypeVersion { private get; set; }
 
-        private const string AggregateType = "Wine";
+        private const string AggregateType = "WineTasting";
         private const string AggregateTypeVersion = "1";
 
         protected WineCommandBase(string wineId, IDictionary<string, StringValues> headers)
@@ -23,17 +23,17 @@ namespace Tba.CqrsEs.Application.Commands
             WineId = wineId;
         }
 
-        public Message Message
+        public ServiceBusMessage Message
         {
             get
             {
-                var message = new Message(Encoding.ASCII.GetBytes(Body))
+                var message = new ServiceBusMessage(Encoding.ASCII.GetBytes(Body))
                 {
                     ContentType = "application/json",
                     CorrelationId = CorrelationId,
-                    Label = MessageLabel,
+                    Subject = MessageLabel,
                     PartitionKey = WineId,
-                    UserProperties =
+                    ApplicationProperties =
                     {
                         new KeyValuePair<string, object>("AggregateType", $"{AggregateType}"),
                         new KeyValuePair<string, object>("AggregateVersion", $"{AggregateTypeVersion}"),
@@ -42,7 +42,11 @@ namespace Tba.CqrsEs.Application.Commands
                     }
                 };
 
-                // todo add headers
+                //add the incoming headers to the message
+                foreach (var (key, value) in _headers)
+                {
+                    message.ApplicationProperties.Add(key, value.ToString());
+                }
 
                 return message;
             }
@@ -55,7 +59,7 @@ namespace Tba.CqrsEs.Application.Commands
         {
             get
             {
-                throw new NotImplementedException();
+                return Convert.ToBase64String(Guid.NewGuid().ToByteArray());
             }
         }
 

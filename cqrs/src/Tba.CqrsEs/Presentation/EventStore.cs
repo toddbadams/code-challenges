@@ -1,30 +1,29 @@
-using System;
-using System.Threading.Tasks;
-using Microsoft.Azure.ServiceBus;
-using Microsoft.Azure.ServiceBus.Core;
-using Microsoft.Azure.WebJobs;
+//using Azure.Messaging.ServiceBus;
+//using Microsoft.Azure.WebJobs;
+//using System;
+//using System.Threading.Tasks;
 
-namespace Tba.CqrsEs.Presentation
-{
-    public class EventStore
-    {
-        [FunctionName("Function1")]
-        public  async Task Run([ServiceBusTrigger("events", "wines-subscriber", Connection = "TopicListen")]
-            Message message, 
-            MessageReceiver messageReceiver,
-            string lockToken,
+//namespace Tba.CqrsEs.Presentation
+//{
+//    public class EventStore
+//    {
+//        [FunctionName("EventStore")]
+//        public async Task Run([ServiceBusTrigger("events", "wines-subscriber", Connection = "TopicListen")]
+//            ServiceBusMessage message,
+//            //MessageReceiver messageReceiver,
+//            string lockToken,
 
-            [CosmosDB("wines", "events", ConnectionStringSetting = "CosmosDBConnection")]
-            IAsyncCollector<Message> dbAsyncCollector)
-        {
-            try
-            {
-                await dbAsyncCollector.AddAsync(message);
-            }
-            catch (Exception)
-            {
-                await messageReceiver.DeadLetterAsync(lockToken);
-            }
-        }
-    }
-}
+//            [CosmosDB("wines", "events", ConnectionStringSetting = "CosmosDBConnection")]
+//            IAsyncCollector<ServiceBusMessage> dbAsyncCollector)
+//        {
+//            try
+//            {
+//                await dbAsyncCollector.AddAsync(message);
+//            }
+//            catch (Exception)
+//            {
+//                // await messageReceiver.DeadLetterAsync(lockToken);
+//            }
+//        }
+//    }
+//}
