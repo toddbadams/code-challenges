@@ -41,20 +41,20 @@ namespace Tba.CqrsEs.Tests.Application.Commands
         }
 
         [Theory]
-        [ClassData(typeof(UpdateWineCommandTestData))]
-        public void UpdateWineCommand_Should_Throw_Null_Argument_Given_NullParameters(string wineId, UpdateWineBody body,
+        [ClassData(typeof(UpdateWineTastingAppearanceTestData))]
+        public void UpdateWineCommand_Should_Throw_Null_Argument_Given_NullParameters(string wineId, UpdateWineTastingAppearanceBody body,
             IDictionary<string, StringValues> headers)
         {
             Assert.Throws<ArgumentNullException>(() => _factory.UpdateWineCommand(wineId, body, headers));
         }
 
-        private class UpdateWineCommandTestData : IEnumerable<object[]>
+        private class UpdateWineTastingAppearanceTestData : IEnumerable<object[]>
         {
             public IEnumerator<object[]> GetEnumerator()
             {
-                yield return new object[] { ID, new UpdateWineBody(), null };
+                yield return new object[] { ID, new UpdateWineTastingAppearanceBody(), null };
                 yield return new object[] { ID, null, new Dictionary<string, StringValues>() };
-                yield return new object[] { null, new UpdateWineBody(), new Dictionary<string, StringValues>() };
+                yield return new object[] { null, new UpdateWineTastingAppearanceBody(), new Dictionary<string, StringValues>() };
             }
 
             IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

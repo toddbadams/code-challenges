@@ -25,5 +25,16 @@ namespace Tba.CqrsEs.Application.Commands
             new UpdateWineTastingAppearanceCommand(wineId ?? throw new ArgumentNullException(),
                 body ?? throw new ArgumentNullException(nameof(UpdateWineTastingAppearanceBody)),
                 headers ?? throw new ArgumentNullException(nameof(IDictionary<string, StringValues>)));
+
+        public UpdateWineTastingNoseCommand UpdateWineCommand(string wineId, UpdateWineTastingNoseBody body, IDictionary<string, StringValues> headers) =>
+            new UpdateWineTastingNoseCommand(wineId ?? throw new ArgumentNullException(),
+                body ?? throw new ArgumentNullException(nameof(UpdateWineTastingNoseBody)),
+                headers ?? throw new ArgumentNullException(nameof(IDictionary<string, StringValues>)));
+
+        public UpdateWineTastingPalateCommand UpdateWineCommand(string wineId, UpdateWineTastingPalateBody body, IDictionary<string, StringValues> headers) =>
+            new UpdateWineTastingPalateCommand(wineId ?? throw new ArgumentNullException(),
+                body ?? throw new ArgumentNullException(nameof(UpdateWineTastingPalateBody)),
+                headers ?? throw new ArgumentNullException(nameof(IDictionary<string, StringValues>)));
+
     }
 }

@@ -1,0 +1,133 @@
+{
+    "appearance":{
+       "name":"Appearance",
+       "brightness":[
+          "bright",
+          "dull"
+       ],
+       "clarity":[
+          "clear",
+          "cloudy"
+       ],
+       "intensities":[
+          "pale",
+          "medium",
+          "deep"
+       ],
+       "intensityTitle":"intensity",
+       "baseColors":[
+          "white",
+          "rose",
+          "red"
+       ],
+       "whites":[
+          "lemon",
+          "gold",
+          "amber",
+          "brown"
+       ],
+       "roses":[
+          "pink",
+          "pink-orange",
+          "orange"
+       ],
+       "reds":[
+          "purple",
+          "ruby",
+          "garnet",
+          "tawny"
+       ]
+    },
+    "nose":{
+       "name":"Nose",
+       "intensities":[
+          "light",
+          "medium -",
+          "medium",
+          "medium +",
+          "pronounced"
+       ],
+       "intensityTitle":"intensity",
+       "floral":[
+          "blossom",
+          "elderflower",
+          "honeysuckle",
+          "jasmine",
+          "rose",
+          "violet"
+       ],
+       "greenFruit":[
+          "apple",
+          "pear",
+          "gooseberry",
+          "grape"
+       ],
+       "citrusFruit":[
+          "grapefruit",
+          "lemon",
+          "lime",
+          "orange"
+       ],
+       "stoneFriut":[
+          "peach",
+          "apricot",
+          "nectarine"
+       ],
+       "tropicalFruit":[
+          "banana",
+          "lychee",
+          "mango",
+          "melon",
+          "passion fruit",
+          "pineapple"
+       ],
+       "redFruit":[
+          "redcurrant",
+          "cranberry",
+          "raspberry",
+          "strawberry",
+          "red cherry",
+          "red plum"
+       ],
+       "blackFruit":[
+          "blackcurrant",
+          "blackberry",
+          "blueberry",
+          "black cherry",
+          "black plum"
+       ],
+       "herbaceous":[
+          "green bell pepper",
+          "grass",
+          "tomato leaf",
+          "asparagus"
+       ],
+       "herbal":[
+          "eucalyptus",
+          "mint",
+          "fennel",
+          "dill",
+          "dried herbs"
+       ],
+       "spice":[
+          "black/white pepper",
+          "liquorice",
+          "cinnamon"
+       ],
+       "ripeness":[
+          "unripe",
+          "ripe",
+          "dried",
+          "cooked"
+       ]
+    },
+    "palate":{
+       "name":"Palate"
+    },
+    "conclusion":{
+       "name":"Conclusion"
+    },
+    "note":{
+       "name":"Note"
+    }
+ }

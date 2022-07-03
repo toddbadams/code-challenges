@@ -9,5 +9,7 @@ namespace Tba.CqrsEs.Application.Interfaces
     {
         CreateWineTastingCommand CreateWineTastingCommand(CreateWineTastingBody body, IDictionary<string, StringValues> headers);
         UpdateWineTastingAppearanceCommand UpdateWineCommand(string wineId, UpdateWineTastingAppearanceBody body, IDictionary<string, StringValues> headers);
+        UpdateWineTastingNoseCommand UpdateWineCommand(string wineId, UpdateWineTastingNoseBody body, IDictionary<string, StringValues> headers);
+        UpdateWineTastingPalateCommand UpdateWineCommand(string wineId, UpdateWineTastingPalateBody body, IDictionary<string, StringValues> headers);
     }
 }

@@ -1,0 +1,89 @@
+<ion-grid>
+  <ion-row>
+    <ion-label class="note">{{nose.note}}</ion-label>
+  </ion-row>
+
+  <ion-row *ngIf="nose.system.intensities">
+    <ion-range color="primary" [snaps]="true" [min]="0" [max]="nose.system.intensities.length-1"
+      (ionChange)="setIntensity($event)">
+      <ion-text slot="start" color="secondary">intensity</ion-text>
+    </ion-range>
+  </ion-row>
+
+  <ion-row *ngIf="nose.system.ripeness">
+    <ion-range color="primary" [snaps]="true" [min]="0" [max]="nose.system.ripeness.length-1"
+      (ionChange)="setRipeness($event)">
+      <ion-text slot="start" color="secondary">ripeness</ion-text>
+    </ion-range>
+  </ion-row>
+
+  <ion-row *ngIf="nose.system.greenFruit">
+    <ion-select placeholder="green fruits" [multiple]="true" (ionChange)="setGreenFruit($event)">
+      <ion-select-option *ngFor="let x of nose.system.greenFruit" value={{x}}>
+        {{x}}</ion-select-option>
+    </ion-select>
+  </ion-row>
+
+  <ion-row *ngIf="nose.system.citrusFruit">
+        <ion-select placeholder="citrus fruits" [multiple]="true" (ionChange)="setCitrusFruit($event)">
+          <ion-select-option *ngFor="let x of nose.system.citrusFruit" value={{x}}>
+            {{x}}</ion-select-option>
+        </ion-select>
+  </ion-row>
+
+  <ion-row *ngIf="nose.system.stoneFruit">
+        <ion-select placeholder="stone fruits" [multiple]="true" (ionChange)="setStoneFruit($event)">
+          <ion-select-option *ngFor="let x of nose.system.stoneFruit" value={{x}}>
+            {{x}}</ion-select-option>
+        </ion-select>
+  </ion-row>
+
+  <ion-row *ngIf="nose.system.tropicalFruit">
+        <ion-select placeholder="stone fruits" [multiple]="true" (ionChange)="setTropicalFruit($event)">
+          <ion-select-option *ngFor="let x of nose.system.tropicalFruit" value={{x}}>
+            {{x}}</ion-select-option>
+        </ion-select>
+  </ion-row>
+
+  <ion-row *ngIf="nose.system.redFruit">
+        <ion-select placeholder="red fruits" [multiple]="true" (ionChange)="setRedFruit($event)">
+          <ion-select-option *ngFor="let x of nose.system.redFruit" value={{x}}>
+            {{x}}</ion-select-option>
+        </ion-select>
+  </ion-row>
+
+  <ion-row *ngIf="nose.system.blackFruit">
+        <ion-select placeholder="black fruits" [multiple]="true" (ionChange)="setBlackFruit($event)">
+          <ion-select-option *ngFor="let x of nose.system.blackFruit" value={{x}}>
+            {{x}}</ion-select-option>
+        </ion-select>
+  </ion-row>
+
+  <ion-row *ngIf="nose.system.floral">
+        <ion-select placeholder="floral" [multiple]="true" (ionChange)="setFloral($event)">
+          <ion-select-option *ngFor="let x of nose.system.floral" value={{x}}>
+            {{x}}</ion-select-option>
+        </ion-select>
+  </ion-row>
+
+  <ion-row *ngIf="nose.system.herbaceous">
+        <ion-select placeholder="herbaceous" [multiple]="true" (ionChange)="setHerbaceous($event)">
+          <ion-select-option *ngFor="let x of nose.system.herbaceous" value={{x}}>
+            {{x}}</ion-select-option>
+        </ion-select>
+  </ion-row>
+
+  <ion-row *ngIf="nose.system.herbal">
+        <ion-select placeholder="herbal" [multiple]="true" (ionChange)="setHerbal($event)">
+          <ion-select-option *ngFor="let x of nose.system.herbal" value={{x}}>
+            {{x}}</ion-select-option>
+        </ion-select>
+  </ion-row>
+
+  <ion-row *ngIf="nose.system.spice">
+        <ion-select placeholder="spice" [multiple]="true" (ionChange)="setSpice($event)">
+          <ion-select-option *ngFor="let x of nose.system.spice" value={{x}}>
+            {{x}}</ion-select-option>
+        </ion-select>
+  </ion-row>
+</ion-grid>

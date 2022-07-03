@@ -1,0 +1,53 @@
+<ion-header color="primary">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{tasting?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="light" *ngIf="tasting">
+  <ion-accordion-group>
+    <ion-accordion value="appearance">
+      <ion-item slot="header" color="light">
+        <ion-badge color="primary">1</ion-badge>
+        <ion-label>{{tasting.appearance.system.name}}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <app-tasting-appearance [appearance]="tasting.appearance"></app-tasting-appearance>
+      </div>
+    </ion-accordion>
+
+    <ion-accordion value="nose">
+      <ion-item slot="header" color="light">
+        <ion-badge color="primary">2</ion-badge>
+        <ion-label>{{tasting.nose.system.name}}</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        <app-tasting-nose [nose]="tasting.nose"></app-tasting-nose>
+      </div>
+    </ion-accordion>
+
+    <ion-accordion value="palate">
+      <ion-item slot="header" color="light">
+        <ion-badge color="primary">3</ion-badge>
+        <ion-label>palate</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        palate
+      </div>
+    </ion-accordion>
+
+    <ion-accordion value="conclusion">
+      <ion-item slot="header" color="light">
+        <ion-badge color="primary">4</ion-badge>
+        <ion-label>conclusion</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">
+        conclusion
+      </div>
+    </ion-accordion>
+
+  </ion-accordion-group>
+</ion-content>

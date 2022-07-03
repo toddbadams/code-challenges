@@ -39,13 +39,33 @@ namespace Tba.CqrsEs.Presentation
                 messages);
 
         [FunctionName(Name + "-update-appearance")]
-        public async Task<IActionResult> Put(
-            [HttpTrigger(AuthorizationLevel.Function, "put", Route = Name + "/{wineId}")]
+        public async Task<IActionResult> PutAppearance(
+            [HttpTrigger(AuthorizationLevel.Function, "put", Route = Name + "/{wineId}/appearance")]
             HttpRequest req,
             string wineId,
             [ServiceBus(ServiceBusQueueName, Connection = ServiceBusConnection)]
             IAsyncCollector<ServiceBusMessage> messages) => await ProcessRequest(
                 async () => _commandFactory.UpdateWineCommand(wineId, await ReadBodyAsync<UpdateWineTastingAppearanceBody>(req), req.Headers),
+                messages);
+
+        [FunctionName(Name + "-update-nose")]
+        public async Task<IActionResult> PutNose(
+            [HttpTrigger(AuthorizationLevel.Function, "put", Route = Name + "/{wineId}/nose")]
+            HttpRequest req,
+            string wineId,
+            [ServiceBus(ServiceBusQueueName, Connection = ServiceBusConnection)]
+            IAsyncCollector<ServiceBusMessage> messages) => await ProcessRequest(
+                async () => _commandFactory.UpdateWineCommand(wineId, await ReadBodyAsync<UpdateWineTastingNoseBody>(req), req.Headers),
+                messages);
+
+        [FunctionName(Name + "-update-palate")]
+        public async Task<IActionResult> PutPalate(
+            [HttpTrigger(AuthorizationLevel.Function, "put", Route = Name + "/{wineId}/pallate")]
+            HttpRequest req,
+            string wineId,
+            [ServiceBus(ServiceBusQueueName, Connection = ServiceBusConnection)]
+            IAsyncCollector<ServiceBusMessage> messages) => await ProcessRequest(
+                async () => _commandFactory.UpdateWineCommand(wineId, await ReadBodyAsync<UpdateWineTastingPalateBody>(req), req.Headers),
                 messages);
 
         private static async Task<IActionResult> ProcessRequest(Func<Task<WineCommandBase>> func, IAsyncCollector<ServiceBusMessage> messages)

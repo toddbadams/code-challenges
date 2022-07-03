@@ -5,10 +5,13 @@ using System.Threading.Tasks;
 
 namespace Tba.CqrsEs.Presentation
 {
-    public class EventStore
+    public class EventStoreQueueReceiver
     {
         private const string ServiceBusQueueName = "winetastings";
         private const string ServiceBusConnection = "TopicSent";
+        private const string CosmosContainerName = "winetastings";
+        private const string CosmosCollectionName = "events";
+        private const string CosmosConnection = "CosmosDBConnection";
 
         [FunctionName("EventStore")]
         public async Task Run([ServiceBusTrigger(ServiceBusQueueName, Connection = ServiceBusConnection)]
@@ -16,7 +19,7 @@ namespace Tba.CqrsEs.Presentation
             //MessageReceiver messageReceiver,
             string lockToken,
 
-            [CosmosDB("winetastings", "events", ConnectionStringSetting = "CosmosDBConnection")]
+            [CosmosDB(CosmosContainerName, CosmosCollectionName, ConnectionStringSetting = CosmosConnection)]
             IAsyncCollector<ServiceBusMessage> dbAsyncCollector)
         {
             try
