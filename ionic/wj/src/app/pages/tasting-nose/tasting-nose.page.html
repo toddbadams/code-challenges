@@ -1,0 +1,40 @@
+<ion-content fullsize>
+  <ion-text color="primary">
+    <h2 class="ion-padding">Nose</h2>
+  </ion-text>
+  <div *ngIf="stepper.tasting">
+    <ion-item>
+      <ion-text color="dark">
+        <p>{{stepper.tasting.nose.note}}</p>
+      </ion-text>
+    </ion-item>
+
+    <ion-segment [(ngModel)]="currentTab" (ionChange)="setCurrentTab($event)" color="tertiary">
+      <ion-segment-button value="structure" checked>
+        <ion-label>structure</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="primary">
+        <ion-label>primary</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="secondary">
+        <ion-label>secondary</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="tertiary">
+        <ion-label>tertiary</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <wj-tasting-nose-structure [structure]="stepper.tasting.nose.structure" (changeEvent)="changeEvent($event)"
+      *ngIf="currentTab=='structure'"></wj-tasting-nose-structure>
+
+    <wj-tasting-nose-primary [primary]="stepper.tasting.nose.primary" (changeEvent)="changeEvent($event)"
+      *ngIf="currentTab=='primary'"></wj-tasting-nose-primary>
+
+    <wj-tasting-nose-secondary [secondary]="stepper.tasting.nose.secondary" (changeEvent)="changeEvent($event)"
+      *ngIf="currentTab=='secondary'"></wj-tasting-nose-secondary>
+
+    <wj-tasting-nose-tertiary [tertiary]="stepper.tasting.nose.tertiary" (changeEvent)="changeEvent($event)"
+      *ngIf="currentTab=='tertiary'"></wj-tasting-nose-tertiary>
+
+  </div>
+</ion-content>

@@ -1,10 +1,10 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'wj',
+  appId: 'com.winejargon.tba',
+  appName: 'wine jargon',
   webDir: 'www',
-  bundledWebRuntime: false
+  bundledWebRuntime: false,
 };
 
 export default config;

@@ -1,0 +1,20 @@
+<ion-content fullsize>
+    <ion-text color="primary">
+        <h2 class="ion-padding">Style</h2>
+    </ion-text>
+
+    <ion-list>
+        <ion-item (click)="setStyle('white')">
+            <ion-label>Still White</ion-label>
+            <ion-icon src="assets/icons/rose.svg"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label (click)="setStyle('rose')">Still Rose</ion-label>
+            <ion-icon src="/assets/icons/rose.svg" slot="start"></ion-icon>
+        </ion-item>
+        <ion-item>
+            <ion-label (click)="setStyle('red')">Still Red</ion-label>
+            <ion-icon src="/assets/icons/rose.svg"></ion-icon>
+        </ion-item>
+    </ion-list>
+</ion-content>

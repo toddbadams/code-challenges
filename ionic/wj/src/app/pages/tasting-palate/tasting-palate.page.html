@@ -1,0 +1,41 @@
+<ion-content fullsize>
+  <ion-text color="primary">
+    <h2 class="ion-padding">Palate</h2>
+  </ion-text>
+  <div *ngIf="stepper.tasting">
+    <ion-item>
+      <ion-text color="dark">
+        <p>{{stepper.tasting.palate.note}}</p>
+      </ion-text>
+    </ion-item>
+
+
+    <ion-segment [(ngModel)]="currentTab" (ionChange)="setCurrentTab($event)" color="tertiary">
+      <ion-segment-button value="structure" checked>
+        <ion-label>structure</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="primary">
+        <ion-label>primary</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="secondary">
+        <ion-label>secondary</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="tertiary">
+        <ion-label>tertiary</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+
+    <wj-tasting-palate-structure [structure]="stepper.tasting.palate.structure" (changeEvent)="changeEvent($event)"
+      *ngIf="currentTab=='structure'"></wj-tasting-palate-structure>
+
+    <wj-tasting-palate-primary [primary]="stepper.tasting.palate.primary" (changeEvent)="changeEvent($event)"
+      *ngIf="currentTab=='primary'"></wj-tasting-palate-primary>
+
+    <wj-tasting-palate-secondary [secondary]="stepper.tasting.palate.secondary" (changeEvent)="changeEvent($event)"
+      *ngIf="currentTab=='secondary'"></wj-tasting-palate-secondary>
+
+    <wj-tasting-palate-tertiary [tertiary]="stepper.tasting.palate.tertiary" (changeEvent)="changeEvent($event)"
+      *ngIf="currentTab=='tertiary'"></wj-tasting-palate-tertiary>
+  </div>
+</ion-content>

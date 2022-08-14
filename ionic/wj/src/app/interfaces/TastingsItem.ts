@@ -1,9 +1,12 @@
 
 export interface TastingsItem {
-    id: string;
-    name: string;
-    vintage: number;
+    featured_image: string;
+    seo_title: string;
+    published: Date;
+    gps: string;
     producer: string;
-    country: string;
+    vintage: number;
     region: string;
+    variety: string;
+    summary: string;
 }

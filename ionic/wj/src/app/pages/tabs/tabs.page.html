@@ -1,0 +1,32 @@
+<ion-tabs #tabs (ionTabsDidChange)="setCurrentTab($event)">
+
+  <ion-fab horizontal="center" vertical="bottom" translucent="true">
+    <ion-fab-button [routerLink]="['/tasting']">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <ion-tab-bar slot="bottom">
+
+    <ion-tab-button tab="tastings">
+      <ion-icon [name]="selectTab == 'home' ? 'home' : 'home-outline'"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="search" class="search">
+      <ion-icon [name]="selectTab == 'search' ? 'search' : 'search-outline'"></ion-icon>
+    </ion-tab-button>
+    
+    <svg height="50" viewBox="0 0 100 50" width="100" xmlns="http://www.w3.org/2000/svg">
+    </svg>
+
+    <ion-tab-button tab="learn" class="learn">
+      <ion-icon [name]="selectTab == 'learn' ? 'book' : 'book-outline'"></ion-icon>
+    </ion-tab-button>
+    
+    <ion-tab-button tab="profile">
+      <ion-icon [name]="selectTab == 'profile' ? 'person' : 'person-outline'"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

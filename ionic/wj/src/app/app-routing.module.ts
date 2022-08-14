@@ -2,18 +2,34 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+ 
+  // {
+  //   path: 'welcome',
+  //   loadChildren: () => import('./pages/welcome/home.module').then(m => m.HomePageModule)
+  // },
+  // {
+  //   path: 'profile',
+  //   loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfilePageModule)
+  // },
+  // {
+  //   path: 'learn',
+  //   loadChildren: () => import('./pages/learn/learn.module').then(m => m.LearnPageModule)
+  // },
   {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path: 'tastings',
+    loadChildren: () => import('./pages/tastings/tastings.module').then(m => m.TastingsPageModule)
   },
-{
-  path: 'home',
-  loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule)
-},
   {
     path: 'tasting',
-    loadChildren: () => import('./pages/tasting/tasting.module').then( m => m.TastingPageModule)
+    loadChildren: () => import('./pages/tasting-stepper/tasting-stepper.module').then( m => m.TastingStepperPageModule)
+  },{
+    path: '',
+    redirectTo: 'tabs',
+    pathMatch: 'full'
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./pages/tabs/tabs.module').then( m => m.TabsPageModule)
   }
 ];
 
@@ -23,4 +39,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

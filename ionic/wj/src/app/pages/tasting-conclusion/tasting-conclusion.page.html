@@ -1,0 +1,15 @@
+<ion-content fullsize>
+  <ion-text color="primary">
+    <h2 class="ion-padding">Conclusion</h2>
+  </ion-text>
+
+  <ion-list *ngIf="stepper.tasting">
+    <ion-item>
+      <ion-text color="dark"><p>{{stepper.tasting.conclusion.note}}</p></ion-text>
+    </ion-item>
+    <wj-tasting-property *ngFor="let p of stepper.tasting.conclusion.properties" [property]="p" 
+    (isIncludedChangeEvent)="isIncludedChangeEvent($event)"
+    (propertyChangeEvent)="propertyChangeEvent($event)"></wj-tasting-property>
+
+  </ion-list>
+</ion-content>

@@ -1,0 +1,6 @@
+<ion-list>
+  <wj-tasting-property *ngFor="let p of tertiary.properties" [property]="p"
+    (isIncludedChangeEvent)="isIncludedChangeEvent($event)"
+    (propertyChangeEvent)="propertyChangeEvent($event)">
+  </wj-tasting-property>
+</ion-list>

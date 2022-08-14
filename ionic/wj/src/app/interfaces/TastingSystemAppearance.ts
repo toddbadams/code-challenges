@@ -1,12 +1,9 @@
+import { TastingSystemProperty } from "./TastingSystemProperty";
+import { TastingSystemSet } from "./TastingSystemSet";
 
-export interface TastingSystemAppearance {
-  name: string;
-  intensities: string[];
-  brightness: string[];
-  clarity: string[];
-  rose: string[];
-  whites: string[];
-  roses: string[];
-  reds: string[];
-  baseColors: string[];
+export interface TastingSystemAppearance extends TastingSystemSet {
+  colors: Array<TastingSystemProperty>;
 }
+
+
+

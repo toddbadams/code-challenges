@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "wine-jargon"
+  },
+  "targets": {
+    "wine-jargon": {
+      "hosting": {
+        "app": [
+          "wine-jargon"
+        ]
+      }
+    }
   }
 }

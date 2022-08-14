@@ -1,0 +1,90 @@
+[
+    {
+        "featured_image": "../../../assets/avatar.svg",
+        "seo_title": "2002 Krug Vintage Brut",
+        "published": "2022-07-24T14:25:00Z",
+        "gps": "51.5423992,-0.1297665",
+        "producer": "Krug",
+        "vintage": 2002,
+        "region": "Champage, France",
+        "variety": "Chardonnay, Pinot Noir",
+        "summary": "The unfermented grape sugars left in the wine after fermentation are what give a wine its sweetness."
+    },
+    {
+        "featured_image": "../../../assets/avatar.svg",
+        "seo_title": "2015 Cakebread Cellars Benchland Select Cabernet Sauvignon",
+        "published": "2022-07-24T14:25:00Z",
+        "gps": "51.5423992,-0.1297665",
+        "producer": "Cakebread",
+        "vintage": 2015,
+        "region": "Califorina, USA",
+        "variety": "Cabernet Sauvignon",
+        "summary": "The unfermented grape sugars left in the wine after fermentation are what give a wine its sweetness."
+    },
+    {
+        "featured_image": "../../../assets/avatar.svg",
+        "seo_title": "2018 M. Chapoutier Chateauneuf-du-Pape Croix de Bois Rouge",
+        "published": "2022-07-24T14:25:00Z",
+        "gps": "51.5423992,-0.1297665",
+        "producer": "M. Chapoutier",
+        "vintage": 2018,
+        "region": "Chateauneuf-du-Pape, France",
+        "variety": "GSM",
+        "summary": "The unfermented grape sugars left in the wine after fermentation are what give a wine its sweetness."
+    },
+    {
+        "featured_image": "../../../assets/avatar.svg",
+        "seo_title": "2014 Cakebread Cellars Dancing Bear Ranch Red",
+        "published": "2022-07-24T14:25:00Z",
+        "gps": "51.5423992,-0.1297665",
+        "producer": "Cakebread",
+        "vintage": 2014,
+        "region": "Califorina, USA",
+        "variety": "GSM",
+        "summary": "The unfermented grape sugars left in the wine after fermentation are what give a wine its sweetness."
+    },
+    {
+        "featured_image": "../../../assets/avatar.svg",
+        "seo_title": "2018 Ridge Vineyards Monte Bello",
+        "published": "2022-07-24T14:25:00Z",
+        "gps": "51.5423992,-0.1297665",
+        "producer": "Ridge Vineyards",
+        "vintage": 2018,
+        "region": "Califorina, USA",
+        "variety": "Cabernet Sauvignon",
+        "summary": "The unfermented grape sugars left in the wine after fermentation are what give a wine its sweetness."
+    },
+    {
+        "featured_image": "../../../assets/avatar.svg",
+        "seo_title": "2002 Krug Vintage Brut",
+        "published": "2022-07-24T14:25:00Z",
+        "gps": "51.5423992,-0.1297665",
+        "producer": "Krug",
+        "vintage": 2015,
+        "region": "Champage, France",
+        "variety": "Chardonnay, Pinot Noir",
+        "summary": "The unfermented grape sugars left in the wine after fermentation are what give a wine its sweetness."
+    },
+    {
+        "featured_image": "../../../assets/avatar.svg",
+        "seo_title": "2002 Krug Vintage Brut",
+        "published": "2022-07-24T14:25:00Z",
+        "gps": "51.5423992,-0.1297665",
+        "producer": "Krug",
+        "vintage": 2018,
+        "region": "Champage, France",
+        "variety": "Chardonnay, Pinot Noir",
+        "summary": "The unfermented grape sugars left in the wine after fermentation are what give a wine its sweetness."
+    },
+    {
+        "featured_image": "../../../assets/avatar.svg",
+        "seo_title": "2002 Krug Vintage Brut",
+        "published": "2022-07-24T14:25:00Z",
+        "gps": "51.5423992,-0.1297665",
+        "producer": "Krug",
+        "vintage": 2014,
+        "region": "Champage, France",
+        "variety": "Chardonnay, Pinot Noir",
+        "summary": "The unfermented grape sugars left in the wine after fermentation are what give a wine its sweetness."
+    }
+]
