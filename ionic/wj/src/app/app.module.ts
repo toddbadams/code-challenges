@@ -10,32 +10,32 @@ import { environment } from '../environments/environment';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { QuillModule, QuillModules } from 'ngx-quill';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { SwiperModule } from 'swiper/angular';
 
-const modules: QuillModules = {  
-  toolbar: [
-    ['bold'],        // toggled buttons, 'italic', 'underline', 'strike'
-   // ['blockquote', 'code-block'],
+// const modules: QuillModules = {  
+//   toolbar: [
+//     ['bold'],        // toggled buttons, 'italic', 'underline', 'strike'
+//    // ['blockquote', 'code-block'],
   
-   // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-   // [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-   // [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-   // [{ 'direction': 'rtl' }],                         // text direction
+//    // [{ 'header': 1 }, { 'header': 2 }],               // custom button values
+//    // [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+//    // [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
+//     [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
+//    // [{ 'direction': 'rtl' }],                         // text direction
   
-  //  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-   // [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+//   //  [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
+//    // [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
   
-    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-    [{ 'font': [] }],
-    [{ 'align': [] }],
+//     [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
+//     [{ 'font': [] }],
+//     [{ 'align': [] }],
   
-    ['clean']                                         // remove formatting button
-  ]
-};
+//     ['clean']                                         // remove formatting button
+//   ]
+// };
 
 @NgModule({
   // components, directives, pipes
@@ -59,10 +59,13 @@ const modules: QuillModules = {
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFirestoreModule, // imports firebase/storage only needed for storage features
 
-    // quill
-    QuillModule.forRoot({
-      modules
-    })
+    // // quill
+    // QuillModule.forRoot({
+    //   modules
+    // })
+
+    // Swiper
+    SwiperModule
   ],
 
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

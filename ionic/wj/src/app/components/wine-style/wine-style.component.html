@@ -1,3 +1,31 @@
-<p>
-  wine-style works!
-</p>
+<swiper [config]="config" 
+(swiper)="onSwiper($event)"
+(slideChange)="onSlideChange()" >
+  <ng-template swiperSlide>
+    <!-- <ion-card>
+      <img src="/src/assets/images/apple144.png" />
+      <ion-card-header>
+        <ion-card-subtitle>still white</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card> -->
+    one
+  </ng-template>
+  <ng-template swiperSlide>
+    <!-- <ion-card>
+      <img src="/src/assets/images/apple144.png" />
+      <ion-card-header>
+        <ion-card-subtitle>still rose</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card> -->
+    two
+  </ng-template>
+  <ng-template swiperSlide>
+    <!-- <ion-card>
+      <img src="/src/assets/images/apple144.png" />
+      <ion-card-header>
+        <ion-card-subtitle>still red</ion-card-subtitle>
+      </ion-card-header>
+    </ion-card> -->
+    three
+  </ng-template>
+</swiper>
