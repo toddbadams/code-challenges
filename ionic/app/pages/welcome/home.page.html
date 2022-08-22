@@ -1,0 +1,52 @@
+<ion-content fullscreen class="ion-padding" scroll-y="false">
+
+  <!-- <ion-button (click)="setApi()" color='primary' expand="block">Test Api On/Off</ion-button>
+  <ion-button (click)="testVideoPlayerPlugin('mp4')" color='primary' expand="block">Fullscreen MP4 Video</ion-button>
+  <ion-button (click)="testVideoPlayerPlugin('aws')" color='primary' expand="block">Fullscreen Video from AWS S3</ion-button>
+  <ion-button *ngIf="aPlatform" (click)="testVideoPlayerPlugin('webm')" color='primary' expand="block">Fullscreen WEBM Video</ion-button>
+  <ion-button (click)="testVideoPlayerPlugin('hls')" color='primary' expand="block">Fullscreen HLS Video</ion-button>
+  <ion-button *ngIf="aPlatform" (click)="testVideoPlayerPlugin('mpd')" color='primary' expand="block">Fullscreen DASH MPD Video</ion-button>
+  <ion-button *ngIf="aPlatform" (click)="testVideoPlayerPlugin('smooth')" color='primary' expand="block">Fullscreen ISM Video</ion-button>
+  <ion-button (click)="testVideoPlayerPlugin('ytube')" color='primary' expand="block">Fullscreen YouTube Video</ion-button> 
+  <ion-button *ngIf="wPlatform" [href]="'../../assets/videos/intro.mp4'" routerDirection="forward" color='primary' expand="block">Embedded Videos</ion-button>
+  <ion-button *ngIf="!wPlatform" (click)="testVideoPlayerPlugin('internal')" color='primary' expand="block">Fullscreen Internal Video</ion-button>
+  <ion-button *ngIf="!wPlatform" (click)="testVideoPlayerPlugin('application')" color='primary' expand="block">Fullscreen Application Video</ion-button>
+  <ion-button (click)="testVideoPlayerPlugin('asset')" color='primary' expand="block">Fullscreen Asset Video</ion-button>
+  <ion-button *ngIf="aPlatform" (click)="testVideoPlayerPlugin('dcim')" color='primary' expand="block">Fullscreen DCIM Video</ion-button>
+  <ion-button *ngIf="aPlatform" (click)="testVideoPlayerPlugin('extSdCard')" color='primary' expand="block">Fullscreen extSdCard DCIM Video</ion-button>
+  <ion-button *ngIf="iPlatform" (click)="testVideoPlayerPlugin('intFileIOS')" color='primary' expand="block">Fullscreen intFileIOS Video</ion-button>
+  <ion-button *ngIf="iPlatform" (click)="testVideoPlayerPlugin('dcimIOS')" color='primary' expand="block">Fullscreen IOS DCIM Video</ion-button> -->
+  <ion-card>
+    <img src="../../assets/videos/intro.jpg" (click)="testVideoPlayerPlugin('mp4')"/>
+    <ion-card-header>
+      <ion-card-title>Wine Jargon</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      A tasting note describes the characteristics of a wine. By harnessing the wisdom of the community to describe a wine's personality in a methodical way, wine jargon aims to assist wine consumers in discovering wines they might appreciate.
+      </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" class="ion-margin-top" id="open-signup-modal">sign up
+  </ion-button>
+  <p>I'm already a user, <a id="open-login-modal" expand="block">login</a></p>
+
+
+  <ion-modal #modal trigger="open-login-modal" [initialBreakpoint]="0.375" [breakpoints]="[0, 0.375]">
+    <ng-template>
+      <wj-login></wj-login>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal #modal trigger="open-signup-modal" [initialBreakpoint]="0.375" [breakpoints]="[0, 0.375]">
+    <ng-template>
+      <wj-signup></wj-signup>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal #modal trigger="open-forgotpassword-modal" [initialBreakpoint]="0.375" [breakpoints]="[0, 0.375]">
+    <ng-template>
+      <wj-forgotpassword></wj-forgotpassword>
+    </ng-template>
+  </ion-modal>
+
+</ion-content>

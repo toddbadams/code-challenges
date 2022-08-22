@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button [routerLink]="['/tastings']">
+          <ion-icon name="arrow-back-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>Learn</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div *ngIf="!post">
+    <ion-card *ngFor="let p of posts" (click)="select(p.slug)" button>
+      
+      <img src="{{p.featured_image}}"  alt="{{p.featured_image_alt}}"/>
+      <ion-card-header>
+        <ion-card-title>{{p.title}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+        {{p.summary}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+   <ion-card *ngIf="post">
+      
+      <img src="{{post.featured_image}}" alt="{{post.featured_image_alt}}"/>
+      <ion-card-header>
+        <ion-card-title>{{post.title}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content [innerHTML]="post.body"></ion-card-content>
+    </ion-card> 
+
+  </ion-content>

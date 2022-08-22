@@ -1,0 +1,26 @@
+:host {
+    div.property-wrapper {
+        ion-label.item-title {
+            padding-left: 20px;
+        }
+        ion-toggle {
+            padding-top: 10px;
+            padding-bottom: 20px;
+            height: 32px;
+        }
+        ion-select {
+            flex-grow: 1;
+        }
+        div.item-control {
+            width: 100%;
+        }
+        &.item-is-included {
+            border-bottom: 1px solid var(--ion-color-medium);
+        }
+        ion-label.item-title-not-included {
+            flex-shrink: 0;
+            padding: 4px 16px 5px 0px;
+            color: var(--ion-color-light);
+        }
+    }
+}

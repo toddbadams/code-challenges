@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TastingSystem } from 'src/app/interfaces/tastingSystem';
+import { TastingSystem } from 'src/app/interfaces/TastingSystem';
 import { Tasting } from 'src/app/models/tasting/Tasting';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { TastingStepper } from 'src/app/models/tasting/TastingStepper';

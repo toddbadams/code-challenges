@@ -1,7 +1,7 @@
 import { TastingPalateTertiary } from "./TastingPalateTertiary";
 import { TastingPalateSecondary } from "./TastingPalateSecondary";
 import { TastingPalatePrimary } from "./TastingPalatePrimary";
-import { TastingSystem } from "src/app/interfaces/tastingSystem";
+import { TastingSystem } from "src/app/interfaces/TastingSystem";
 import { TastingPalateStructure } from "./TastingPalateStructure";
 import { environment } from "src/environments/environment";
 

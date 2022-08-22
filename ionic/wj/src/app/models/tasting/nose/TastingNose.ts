@@ -1,7 +1,7 @@
 import { TastingNoseTertiary } from "./TastingNoseTertiary";
 import { TastingNoseSecondary } from "./TastingNoseSecondary";
 import { TastingNosePrimary } from "./TastingNosePrimary";
-import { TastingSystem } from "src/app/interfaces/tastingSystem";
+import { TastingSystem } from "src/app/interfaces/TastingSystem";
 import { TastingNoseStructure } from "./TastingNoseStructure";
 import { environment } from "src/environments/environment";
 

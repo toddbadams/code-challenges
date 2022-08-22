@@ -1,4 +1,7 @@
 export enum TastingPropertyDisplayEnum {
   select,
-  range
+  multiselect,
+  range,
+  boolean,
+  typeAhead
 }

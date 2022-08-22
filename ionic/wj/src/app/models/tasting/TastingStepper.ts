@@ -1,4 +1,4 @@
-import { TastingSystem } from "src/app/interfaces/tastingSystem";
+import { TastingSystem } from "src/app/interfaces/TastingSystem";
 import { tastingStepperStateEnum } from "./tastingStepperStateEnum";
 import { tastingStepperValueEnum } from "./tastingStepperValueEnum";
 import { Tasting } from "./Tasting";
@@ -12,11 +12,17 @@ export class TastingStepper {
     states: Array<tastingStepperStateEnum>;
     tasting: Tasting;
     nextStep: string;
+    stepTitles: Array<string>;
+    stepSubtitles: Array<string>;
 
     constructor(public system: TastingSystem) {
         this.steps = Object.values(tastingStepperValueEnum) as string[];
+        this.stepTitles = ["Style", "Faults", "Fruits", "Florals", "Herbs & Spices"]
+        this.stepSubtitles = ["select the style of wine", "does the wine exhibit any faults on the nose?", "does the wine exhibit any fruits on the nose?", "does the wine exhibit and floral notes on the nose",
+    "does the wine exhibit any herbacesouse or spice notes on the nose?"];
+        this.currentStep = 1;
         this.states = [tastingStepperStateEnum.todo, tastingStepperStateEnum.disabled, tastingStepperStateEnum.disabled, tastingStepperStateEnum.disabled, tastingStepperStateEnum.disabled, tastingStepperStateEnum.disabled, tastingStepperStateEnum.disabled]
-        this.setCurrentTab(this.steps[0]);
+       // this.setCurrentTab(this.steps[0]);
     }
 
     setCurrentTab(tab: string) {

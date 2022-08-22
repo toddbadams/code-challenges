@@ -1,4 +1,4 @@
-import { TastingSystem } from "src/app/interfaces/tastingSystem";
+import { TastingSystem } from "src/app/interfaces/TastingSystem";
 import { TastingAppearanceStructure } from "./appearance/TastingAppearanceStructure";
 import { TastingNoseTertiary } from "./nose/TastingNoseTertiary";
 import { TastingNoseSecondary } from "./nose/TastingNoseSecondary";
