@@ -24,10 +24,10 @@ export class TastingPropertyComponent implements OnInit {
   onPropertyChange($event: Event) {
     if (!environment.production) console.log("wj-tasting-property onChange: ", $event);
 
-    if (this.property.isMultiSelect) {
-      this.propertyChangeEvent.emit(new TastingPropertyEvent(this.property.title, null, ($event as CustomEvent).detail.value as string[]));
-      return;
-    } 
+    // if (this.property.isMultiSelect()) {
+    //   this.propertyChangeEvent.emit(new TastingPropertyEvent(this.property.title, null, ($event as CustomEvent).detail.value as string[]));
+    //   return;
+    // } 
     if (this.property.display == TastingPropertyDisplayEnum.select) {
       this.propertyChangeEvent.emit(new TastingPropertyEvent(this.property.title, ($event as CustomEvent).detail.value as string, null));
       return;
@@ -54,7 +54,7 @@ export class TastingPropertyComponent implements OnInit {
   }
 
   getValue() {
-    if(this.property.isMultiSelect) return this.property.selectedValues;
+   // if(this.property.isMultiSelect) return this.property.selectedValues;
     return this.property.selectedValue;
   }
 }

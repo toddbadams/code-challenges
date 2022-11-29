@@ -6,23 +6,24 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen="true" *ngIf="stepper" scrollY="false">
-
-  <ion-text>
-    <h1>Style</h1>
-    <p>select the style of wine</p>
-  </ion-text>
-
-  <!-- <wj-wine-style></wj-wine-style> -->
+<ion-content fullscreen="true" *ngIf="tasting" scrollY="false">
+  <swiper [config]="config" (swiper)="onSwiper($event)" (slideChange)="onSlideChange()">
+    <ng-template swiperSlide *ngFor="let s of tasting.steps">
+      <ion-text>
+        <h1>{{s.title}}</h1>
+        <p>{{s.subtitle}}</p>
+      </ion-text>
+      <ion-card>    
+        <ion-card-content>
+          <ion-list>
+            <div *ngFor="let p of s.properties">
+              <wj-tasting-property [property]="tasting.getProperty(p)"></wj-tasting-property>
+            </div>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ng-template>
+  </swiper>
 
 
 </ion-content>
-
-<ion-footer>
-  <ion-button class="next" expand="full" size="large" color="secondary">
-    next
-    <div class="button-wrapper">
-      <ion-icon name="chevron-forward-outline"></ion-icon>
-    </div>
-  </ion-button>
-</ion-footer>

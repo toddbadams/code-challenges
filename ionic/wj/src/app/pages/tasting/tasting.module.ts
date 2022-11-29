@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { TastingPageRoutingModule } from './tasting-routing.module';
 import { TastingPage } from './tasting.page';
-import { WineStyleComponent } from 'src/app/components/wine-style/wine-style.component';
 import { SwiperModule } from 'swiper/angular';
+import { TastingPropertyComponent } from 'src/app/components/tasting-property/tasting-property.component';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { SwiperModule } from 'swiper/angular';
     TastingPageRoutingModule,
     SwiperModule
   ],
-  declarations: [TastingPage, WineStyleComponent]
+  declarations: [TastingPage, TastingPropertyComponent]
 })
 export class TastingPageModule {}

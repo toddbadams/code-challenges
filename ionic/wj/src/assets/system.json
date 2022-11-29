@@ -1,54 +1,193 @@
 {
-   "styles": [
-      "still white",
-      "still rose",
-      "still red"
-   ],
    "steps": [
       {
-         "title": "Style",
-         "subtitle": "select the style of wine"
+         "title": "Appearance",
+         "subtitle": "A visual inspection of the wine.",
+         "properties": [
+            "Brightness",
+            "Clarity",
+            "Concentration",
+            "Sediment",
+            "Colour"
+         ]
       },
       {
          "title": "Faults",
-         "subTitle": "does the wine exhibit any faults on the nose?",
-         "properties": ["Cork Taint", "Brettanomyces", "Reduction", "Oxidation", "Volatile Acidity"]
+         "subtitle": "does the wine exhibit any faults on the nose?",
+         "properties": [
+            "Cork Taint",
+            "Brettanomyces",
+            "Reduction",
+            "Oxidation",
+            "Volatile Acidity"
+         ]
       },
       {
          "title": "Fruits",
-         "subTitle": "does the wine exhibit any fruit on the nose?",
+         "subtitle": "does the wine exhibit any fruit on the nose?",
          "properties": [
-            "green fruits",
-            "citrus fruits",
-            "stone fruits",
-            "tropical fruits",
-            "red fruits",
-            "black fruits"
+            "Green Fruits",
+            "Citrus Fruits",
+            "Stone Fruits",
+            "Tropical Fruits",
+            "Red Fruits",
+            "Black Fruits"
          ]
       },
       {
          "title": "Florals",
-         "subTitle": "Does the wine exhibit any floral notes on the nose?",
+         "subtitle": "Does the wine exhibit any floral notes on the nose?",
          "properties": [
-            "floral notes"
+            "Floral Notes"
          ]
       },
       {
          "title": "Herbs & Spices",
-         "subTitle": "Does the wine exhibit any herbaceous or spice notes on the nose?",
+         "subtitle": "Does the wine exhibit any herbaceous or spice notes on the nose?",
          "properties": [
-            "herbaceous notes",
-            "herbal notes",
-            "spice notes"
+            "Herbaceous Notes",
+            "Herbal Notes",
+            "Spice Notes"
+         ]
+      },
+      {
+         "title": "Post Fermentation",
+         "subtitle": "Does the wine exhibit any lees, malo, or oak notes on the nose?",
+         "properties": [
+            "Lees Ageing",
+            "Malolactic Fermentation",
+            "Oak"
+         ]
+      },
+      {
+         "title": "Nose",
+         "subtitle": "Evaulate the overall structure of the nose.",
+         "properties": [
+            "Aroma Intensity",
+            "Fruit Ripeness",
+            "Whole Bunch Fermentation",
+            "Dominate Primary Notes"
+         ]
+      },
+      {
+         "title": "Palate",
+         "subtitle": "Evaulate the overall structure of the flavours of the wine.",
+         "properties": [
+            "Flavour Intensity",
+            "Sweetness",
+            "Acidity Level",
+            "Acidity Feel"
+         ]
+      },
+      {
+         "title": "Fruits",
+         "subtitle": "does the wine exhibit any fruit flavours and aromas?",
+         "properties": [
+            "Green Fruits",
+            "Citrus Fruits",
+            "Stone Fruits",
+            "Tropical Fruits",
+            "Red Fruits",
+            "Black Fruits"
+         ]
+      },
+      {
+         "title": "Florals",
+         "subtitle": "Does the wine exhibit any floral flavours and aromas?",
+         "properties": [
+            "Floral Notes"
+         ]
+      },
+      {
+         "title": "Herbs & Spices",
+         "subtitle": "Does the wine exhibit any herbaceous or spice flavours and aromas?",
+         "properties": [
+            "Herbaceous Notes",
+            "Herbal Notes",
+            "Spice Notes"
          ]
       }
    ],
    "properties": [
       {
+         "values": [
+            "dull",
+            "bright",
+            "brilliant"
+         ],
+         "default": "bright",
+         "title": "Brightness",
+         "subtitle": "select a brightness level.",
+         "isIncluded": true,
+         "display": "select",
+         "order": 1
+      },
+      {
+         "values": [
+            "clear",
+            "slightly cloudy",
+            "cloudy"
+         ],
+         "default": "clear",
+         "title": "Clarity",
+         "subtitle": "select a clarity level.",
+         "isIncluded": true,
+         "display": "select",
+         "order": 2
+      },
+      {
+         "values": [
+            "pale",
+            "medium",
+            "deep"
+         ],
+         "default": "pale",
+         "title": "Concentration",
+         "subtitle": "select a concentration level.",
+         "isIncluded": true,
+         "display": "select",
+         "order": 3
+      },
+      {
+         "values": [
+            "tartrate crystals",
+            "lees"
+         ],
+         "default": null,
+         "title": "Sediment",
+         "subtitle": "does the wine have any sediments.",
+         "isIncluded": false,
+         "display": "select",
+         "order": 5
+      },
+      {
+         "values": [
+            "lemon",
+            "gold",
+            "amber",
+            "brown",
+            "pink",
+            "salmon",
+            "pink-orange",
+            "orange",
+            "purple",
+            "ruby",
+            "garnet",
+            "tawny"
+         ],
+         "default": null,
+         "title": "Colour",
+         "subtitle": "select a colour.",
+         "isIncluded": true,
+         "display": "select",
+         "order": 4
+      },
+      {
          "values": null,
          "default": false,
          "title": "Cork Taint",
          "subtitle": "Smells of wet cardboard, wet dog, musty cellar.",
+         "isIncluded": false,
          "display": "boolean",
          "order": 1
       },
@@ -57,6 +196,7 @@
          "default": false,
          "title": "Brettanomyces",
          "subtitle": "Smells of sweaty leather, barnyard an old bandage.",
+         "isIncluded": false,
          "display": "boolean",
          "order": 2
       },
@@ -65,6 +205,7 @@
          "default": false,
          "title": "Reduction",
          "subtitle": "Smells of garlic, cooked cabbage, rotten eggs, ham, burnt match.",
+         "isIncluded": false,
          "display": "boolean",
          "order": 3
       },
@@ -73,6 +214,7 @@
          "default": false,
          "title": "Oxidation",
          "subtitle": "Smells of bruised apples, jackfruit, linseed oil. looks brown and dull.",
+         "isIncluded": false,
          "display": "boolean",
          "order": 4
       },
@@ -81,6 +223,7 @@
          "default": false,
          "title": "Volatile Acidity",
          "subtitle": "Smells sharply of vinegar or nail polish.",
+         "isIncluded": false,
          "display": "boolean",
          "order": 5
       },
@@ -99,7 +242,8 @@
             "violet"
          ],
          "default": null,
-         "title": "floral notes",
+         "title": "Floral Notes",
+         "isIncluded": false,
          "display": "multiselect",
          "order": 1
       },
@@ -114,10 +258,9 @@
             "quince"
          ],
          "default": null,
-         "title": "green fruits",
+         "title": "Green Fruits",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 2
       },
       {
@@ -131,10 +274,9 @@
             "orange maralade"
          ],
          "default": null,
-         "title": "citrus fruits",
+         "title": "Citrus Fruits",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 3
       },
       {
@@ -146,10 +288,9 @@
             "white peach"
          ],
          "default": null,
-         "title": "stone fruits",
+         "title": "Stone Fruits",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 4
       },
       {
@@ -163,10 +304,9 @@
             "pineapple"
          ],
          "default": null,
-         "title": "tropical fruits",
+         "title": "Tropical Fruits",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 5
       },
       {
@@ -182,10 +322,9 @@
             "tomato"
          ],
          "default": null,
-         "title": "red fruits",
+         "title": "Red Fruits",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 6
       },
       {
@@ -199,10 +338,9 @@
             "olive"
          ],
          "default": null,
-         "title": "black fruits",
+         "title": "Black Fruits",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 7
       },
       {
@@ -214,10 +352,9 @@
          ],
          "default": null,
          "title": "Whole Bunch Fermentation",
-         "subTitle": "whole bunches stems and all ferment",
+         "subtitle": "whole bunches stems and all ferment",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 8
       },
       {
@@ -229,10 +366,9 @@
             "asparagus"
          ],
          "default": null,
-         "title": "herbaceous notes",
+         "title": "Herbaceous Notes",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 9
       },
       {
@@ -247,10 +383,9 @@
             "tomato leaf"
          ],
          "default": null,
-         "title": "herbal notes",
+         "title": "Herbal Notes",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 10
       },
       {
@@ -263,10 +398,9 @@
             "white pepper"
          ],
          "default": null,
-         "title": "spice notes",
+         "title": "Spice Notes",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 11
       },
       {
@@ -281,9 +415,8 @@
             "cooked"
          ],
          "default": null,
-         "title": "ripeness",
+         "title": "Fruit Ripeness",
          "isIncluded": false,
-         "isMultiSelect": false,
          "display": "select",
          "order": 12
       },
@@ -297,9 +430,8 @@
             "vegetal"
          ],
          "default": null,
-         "title": "dominate primary notes",
+         "title": "Dominate Primary Notes",
          "isIncluded": false,
-         "isMultiSelect": false,
          "display": "select",
          "order": 13
       },
@@ -315,10 +447,9 @@
             "acetaldehyde"
          ],
          "default": null,
-         "title": "lees ageing",
+         "title": "Lees Ageing",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 1
       },
       {
@@ -328,10 +459,9 @@
             "cheese"
          ],
          "default": null,
-         "title": "malo",
+         "title": "Malolactic Fermentation",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 2
       },
       {
@@ -348,10 +478,10 @@
             "vanilla"
          ],
          "default": null,
-         "title": "oak",
+         "title": "Oak",
          "isIncluded": false,
          "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 3
       },
       {
@@ -364,10 +494,9 @@
             "raisin"
          ],
          "default": null,
-         "title": "dried fruits",
+         "title": "Dried Fruits",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 1
       },
       {
@@ -394,10 +523,9 @@
             "wet slate"
          ],
          "default": null,
-         "title": "earth",
+         "title": "Earth",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 2
       },
       {
@@ -410,10 +538,9 @@
             "caramel"
          ],
          "default": null,
-         "title": "oxidisation",
+         "title": "Oxidisation",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 3
       },
       {
@@ -425,10 +552,9 @@
             "tobacco"
          ],
          "default": null,
-         "title": "general red",
+         "title": "General Red",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 4
       },
       {
@@ -443,134 +569,10 @@
             "carmel"
          ],
          "default": null,
-         "title": "general white",
+         "title": "General White",
          "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
+         "display": "multiselect",
          "order": 5
-      },
-      {
-         "values": [
-            "dull",
-            "bright",
-            "brilliant"
-         ],
-         "default": "bright",
-         "title": "brightness",
-         "isIncluded": true,
-         "isMultiSelect": false,
-         "display": "select",
-         "order": 1
-      },
-      {
-         "values": [
-            "clear",
-            "slightly cloudy",
-            "cloudy"
-         ],
-         "default": "clear",
-         "title": "clarity",
-         "isIncluded": true,
-         "isMultiSelect": false,
-         "display": "select",
-         "order": 2
-      },
-      {
-         "values": [
-            "pale",
-            "medium",
-            "deep"
-         ],
-         "default": "pale",
-         "title": "concentration",
-         "isIncluded": true,
-         "isMultiSelect": false,
-         "display": "range",
-         "order": 3
-      },
-      {
-         "values": [
-            "tartrate crystals",
-            "lees"
-         ],
-         "default": null,
-         "title": "sediment",
-         "isIncluded": false,
-         "isMultiSelect": false,
-         "display": "select",
-         "order": 5
-      },
-      {
-         "values": [
-            "lemon",
-            "gold",
-            "amber",
-            "brown"
-         ],
-         "default": "lemon",
-         "title": "white",
-         "isIncluded": true,
-         "isMultiSelect": false,
-         "display": "select",
-         "order": 4
-      },
-      {
-         "values": [
-            "pink",
-            "salmon",
-            "pink-orange",
-            "orange"
-         ],
-         "default": "pink",
-         "title": "rose",
-         "isIncluded": true,
-         "isMultiSelect": false,
-         "display": "select",
-         "order": 4
-      },
-      {
-         "values": [
-            "purple",
-            "ruby",
-            "garnet",
-            "tawny"
-         ],
-         "default": "ruby",
-         "title": "red",
-         "isIncluded": true,
-         "isMultiSelect": false,
-         "display": "select",
-         "order": 4
-      },
-      {
-         "values": [
-            "light",
-            "med -",
-            "medium",
-            "med +",
-            "pronounced"
-         ],
-         "default": "medium",
-         "title": "intensity",
-         "isIncluded": true,
-         "isMultiSelect": false,
-         "display": "range",
-         "order": 1
-      },
-      {
-         "values": [
-            "brett",
-            "corked",
-            "reduction",
-            "oxidation",
-            "v.a."
-         ],
-         "default": null,
-         "title": "faults",
-         "isIncluded": false,
-         "isMultiSelect": true,
-         "display": "select",
-         "order": 2
       },
       {
          "values": [
@@ -581,9 +583,22 @@
             "pronounced"
          ],
          "default": null,
-         "title": "flavour intensity",
+         "title": "Aroma Intensity",
          "isIncluded": true,
-         "isMultiSelect": false,
+         "display": "range",
+         "order": 1
+      },
+      {
+         "values": [
+            "light",
+            "med -",
+            "medium",
+            "med +",
+            "pronounced"
+         ],
+         "default": null,
+         "title": "Flavour Intensity",
+         "isIncluded": true,
          "display": "range",
          "order": 1
       },
@@ -596,9 +611,8 @@
             "sweet"
          ],
          "default": null,
-         "title": "sweetness",
+         "title": "Sweetness",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "range",
          "order": 2
       },
@@ -611,9 +625,8 @@
             "high"
          ],
          "default": null,
-         "title": "acidity level",
+         "title": "Acidity Level",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "range",
          "order": 3
       },
@@ -631,9 +644,8 @@
             "zippy"
          ],
          "default": null,
-         "title": "acidity feel",
+         "title": "Acidity Feel",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "select",
          "order": 4
       },
@@ -646,9 +658,8 @@
             "high"
          ],
          "default": null,
-         "title": "tannins",
+         "title": "Tannins",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "range",
          "order": 5
       },
@@ -664,9 +675,8 @@
             "unripe"
          ],
          "default": null,
-         "title": "nature of tannins",
+         "title": "Nature of Tannins",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "select",
          "order": 6
       },
@@ -677,9 +687,8 @@
             "high"
          ],
          "default": null,
-         "title": "alcohol",
+         "title": "Alcohol",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "range",
          "order": 7
       },
@@ -692,9 +701,8 @@
             "full"
          ],
          "default": null,
-         "title": "body",
+         "title": "Body",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "range",
          "order": 8
       },
@@ -719,9 +727,8 @@
             "thin"
          ],
          "default": null,
-         "title": "mouth feel",
+         "title": "Mouth Feel",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "select",
          "order": 9
       },
@@ -734,10 +741,9 @@
             "long"
          ],
          "default": null,
-         "title": "finish",
+         "title": "Finish Length",
          "isIncluded": true,
-         "isMultiSelect": false,
-         "display": "select",
+         "display": "range",
          "order": 10
       },
       {
@@ -749,9 +755,8 @@
             "smoky"
          ],
          "default": null,
-         "title": "flavour at finish",
+         "title": "Flavour at Finish",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "select",
          "order": 11
       },
@@ -764,9 +769,8 @@
             "outstanding"
          ],
          "default": null,
-         "title": "quality",
+         "title": "Quality",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "range",
          "order": 1
       },
@@ -777,34 +781,25 @@
             "balanced"
          ],
          "default": null,
-         "title": "balance",
+         "title": "Balance",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "range",
          "order": 2
       },
       {
-         "values": [
-            "yes",
-            "no"
-         ],
+         "values": null,
          "default": null,
-         "title": "varietal typicity",
+         "title": "Varietal Typicity",
          "isIncluded": true,
-         "isMultiSelect": false,
-         "display": "select",
+         "display": "boolean",
          "order": 3
       },
       {
-         "values": [
-            "yes",
-            "no"
-         ],
+         "values": null,
          "default": null,
-         "title": "regional typicity",
+         "title": "Regional Typicity",
          "isIncluded": true,
-         "isMultiSelect": false,
-         "display": "select",
+         "display": "boolean",
          "order": 4
       },
       {
@@ -813,9 +808,8 @@
             "old world"
          ],
          "default": null,
-         "title": "location",
+         "title": "Location",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "select",
          "order": 5
       },
@@ -826,9 +820,8 @@
             "warm"
          ],
          "default": null,
-         "title": "climate",
+         "title": "Climate",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "select",
          "order": 6
       },
@@ -840,814 +833,10 @@
             "10-20yrs"
          ],
          "default": null,
-         "title": "age",
+         "title": "Age",
          "isIncluded": true,
-         "isMultiSelect": false,
          "display": "select",
          "order": 7
       }
-   ],
-   "primary": {
-      "title": "aromas and flavours of the grape and fermentation",
-      "properties": [
-         {
-            "values": [
-               "acacia",
-               "blossom",
-               "elderflower",
-               "hibiscus",
-               "honeysuckle",
-               "iris",
-               "jasmine",
-               "lilac",
-               "lavender",
-               "rose",
-               "violet"
-            ],
-            "default": null,
-            "title": "floral notes",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 1
-         },
-         {
-            "values": [
-               "apple",
-               "pear",
-               "golden apple",
-               "gooseberry",
-               "grape",
-               "green apple",
-               "quince"
-            ],
-            "default": null,
-            "title": "green fruits",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 2
-         },
-         {
-            "values": [
-               "grapefruit",
-               "key lime",
-               "lemon",
-               "lime",
-               "meyer lemon",
-               "orange",
-               "orange maralade"
-            ],
-            "default": null,
-            "title": "citrus fruits",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 3
-         },
-         {
-            "values": [
-               "apricot",
-               "peach",
-               "apricot",
-               "nectarine",
-               "white peach"
-            ],
-            "default": null,
-            "title": "stone fruits",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 4
-         },
-         {
-            "values": [
-               "banana",
-               "guava",
-               "lychee",
-               "mango",
-               "melon",
-               "passion fruit",
-               "pineapple"
-            ],
-            "default": null,
-            "title": "tropical fruits",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 5
-         },
-         {
-            "values": [
-               "cranberry",
-               "pomegranate",
-               "raspberry",
-               "red cherry",
-               "red plum",
-               "red currant",
-               "sour red cherry",
-               "strawberry",
-               "tomato"
-            ],
-            "default": null,
-            "title": "red fruits",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 6
-         },
-         {
-            "values": [
-               "black cherry",
-               "black currant",
-               "black plum",
-               "blackberry",
-               "blueberry",
-               "boysenberry",
-               "olive"
-            ],
-            "default": null,
-            "title": "black fruits",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 7
-         },
-         {
-            "values": [
-               "banana",
-               "bubble gum",
-               "kirch",
-               "strawberry"
-            ],
-            "default": null,
-            "title": "whole bunch",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 8
-         },
-         {
-            "values": [
-               "green bell pepper",
-               "green almonds",
-               "grass",
-               "tomato leaf",
-               "asparagus"
-            ],
-            "default": null,
-            "title": "herbaceous notes",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 9
-         },
-         {
-            "values": [
-               "black tea",
-               "dill",
-               "dried herbs",
-               "eucalyptus",
-               "fennel",
-               "mint",
-               "oregano",
-               "tomato leaf"
-            ],
-            "default": null,
-            "title": "herbal notes",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 10
-         },
-         {
-            "values": [
-               "anise",
-               "black pepper",
-               "chinese five spice",
-               "cinnamon",
-               "liquorice",
-               "white pepper"
-            ],
-            "default": null,
-            "title": "spice notes",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 11
-         },
-         {
-            "values": [
-               "unripe",
-               "tart",
-               "ripe",
-               "dried",
-               "baked",
-               "stewed",
-               "jammy",
-               "cooked"
-            ],
-            "default": null,
-            "title": "ripeness",
-            "isIncluded": false,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 12
-         },
-         {
-            "values": [
-               "balanced",
-               "fruit forward",
-               "herbaceous",
-               "savory",
-               "spicey",
-               "vegetal"
-            ],
-            "default": null,
-            "title": "dominate primary notes",
-            "isIncluded": false,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 13
-         }
-      ]
-   },
-   "secondary": {
-      "title": "aromas and flavours of post-fermentation winemaking",
-      "properties": [
-         {
-            "values": [
-               "biscuit",
-               "pastry",
-               "bread",
-               "toasted bread",
-               "bread dough",
-               "cheese",
-               "yogurt",
-               "acetaldehyde"
-            ],
-            "default": null,
-            "title": "lees ageing",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 1
-         },
-         {
-            "values": [
-               "butter",
-               "cream",
-               "cheese"
-            ],
-            "default": null,
-            "title": "malo",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 2
-         },
-         {
-            "values": [
-               "cedar",
-               "charcoal",
-               "charred wood",
-               "chocolate",
-               "cloves",
-               "coffee",
-               "coconut",
-               "smoke",
-               "sweet tobacco",
-               "vanilla"
-            ],
-            "default": null,
-            "title": "oak",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 3
-         }
-      ]
-   },
-   "tertiary": {
-      "title": "aromas and flavours of maturation",
-      "properties": [
-         {
-            "values": [
-               "date",
-               "dragon fruit",
-               "fig",
-               "fruitcake",
-               "prune",
-               "raisin"
-            ],
-            "default": null,
-            "title": "dried fruits",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 1
-         },
-         {
-            "values": [
-               "clay",
-               "crushed rock",
-               "diesel",
-               "forest floor",
-               "graphite",
-               "gravel",
-               "mushroom",
-               "oyster shells",
-               "petrichor ",
-               "petroleum",
-               "rubber",
-               "salinity",
-               "soil",
-               "slate",
-               "smoke",
-               "tar",
-               "volcanic rocks",
-               "wet gravel",
-               "wet leaves",
-               "wet slate"
-            ],
-            "default": null,
-            "title": "earth",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 2
-         },
-         {
-            "values": [
-               "almond",
-               "hazelnut",
-               "walnut",
-               "chocolate",
-               "coffee",
-               "caramel"
-            ],
-            "default": null,
-            "title": "oxidisation",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 3
-         },
-         {
-            "values": [
-               "chocolate",
-               "coffee",
-               "expresso",
-               "leather",
-               "tobacco"
-            ],
-            "default": null,
-            "title": "general red",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 4
-         },
-         {
-            "values": [
-               "orange marmalade",
-               "cinnamon",
-               "ginger",
-               "nutmeg,",
-               "almond,",
-               "hazelnut",
-               "honey",
-               "carmel"
-            ],
-            "default": null,
-            "title": "general white",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 5
-         }
-      ]
-   },
-   "appearance": {
-      "title": "Appearance",
-      "properties": [
-         {
-            "values": [
-               "dull",
-               "bright",
-               "brilliant"
-            ],
-            "default": "bright",
-            "title": "brightness",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 1
-         },
-         {
-            "values": [
-               "clear",
-               "slightly cloudy",
-               "cloudy"
-            ],
-            "default": "clear",
-            "title": "clarity",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 2
-         },
-         {
-            "values": [
-               "pale",
-               "medium",
-               "deep"
-            ],
-            "default": "pale",
-            "title": "concentration",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "range",
-            "order": 3
-         },
-         {
-            "values": [
-               "tartrate crystals",
-               "lees"
-            ],
-            "default": null,
-            "title": "sediment",
-            "isIncluded": false,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 5
-         }
-      ],
-      "colors": [
-         {
-            "values": [
-               "lemon",
-               "gold",
-               "amber",
-               "brown"
-            ],
-            "default": "lemon",
-            "title": "white",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 4
-         },
-         {
-            "values": [
-               "pink",
-               "salmon",
-               "pink-orange",
-               "orange"
-            ],
-            "default": "pink",
-            "title": "rose",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 4
-         },
-         {
-            "values": [
-               "purple",
-               "ruby",
-               "garnet",
-               "tawny"
-            ],
-            "default": "ruby",
-            "title": "red",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 4
-         }
-      ]
-   },
-   "nose": {
-      "title": "Nose",
-      "properties": [
-         {
-            "values": [
-               "light",
-               "med -",
-               "medium",
-               "med +",
-               "pronounced"
-            ],
-            "default": "medium",
-            "title": "intensity",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "range",
-            "order": 1
-         },
-         {
-            "values": [
-               "brett",
-               "corked",
-               "reduction",
-               "oxidation",
-               "v.a."
-            ],
-            "default": null,
-            "title": "faults",
-            "isIncluded": false,
-            "isMultiSelect": true,
-            "display": "select",
-            "order": 2
-         }
-      ]
-   },
-   "palate": {
-      "title": "Palate",
-      "properties": [
-         {
-            "values": [
-               "light",
-               "med -",
-               "medium",
-               "med +",
-               "pronounced"
-            ],
-            "default": null,
-            "title": "flavour intensity",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "range",
-            "order": 1
-         },
-         {
-            "values": [
-               "dry",
-               "off dry",
-               "medium dry",
-               "medium sweet",
-               "sweet"
-            ],
-            "default": null,
-            "title": "sweetness",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "range",
-            "order": 2
-         },
-         {
-            "values": [
-               "light",
-               "med -",
-               "medium",
-               "med +",
-               "high"
-            ],
-            "default": null,
-            "title": "acidity level",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "range",
-            "order": 3
-         },
-         {
-            "values": [
-               "angular",
-               "austere",
-               "bright",
-               "flabby",
-               "flat",
-               "fresh",
-               "lively",
-               "racy",
-               "tart",
-               "zippy"
-            ],
-            "default": null,
-            "title": "acidity feel",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 4
-         },
-         {
-            "values": [
-               "light",
-               "med -",
-               "medium",
-               "med +",
-               "high"
-            ],
-            "default": null,
-            "title": "tannins",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "range",
-            "order": 5
-         },
-         {
-            "values": [
-               "chalky",
-               "coarse",
-               "fine",
-               "green",
-               "ripe",
-               "smooth",
-               "soft",
-               "unripe"
-            ],
-            "default": null,
-            "title": "nature of tannins",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 6
-         },
-         {
-            "values": [
-               "low",
-               "medium",
-               "high"
-            ],
-            "default": null,
-            "title": "alcohol",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "range",
-            "order": 7
-         },
-         {
-            "values": [
-               "light",
-               "med -",
-               "medium",
-               "med +",
-               "full"
-            ],
-            "default": null,
-            "title": "body",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "range",
-            "order": 8
-         },
-         {
-            "values": [
-               "angular",
-               "austere",
-               "closed",
-               "creamy",
-               "delicate",
-               "dense",
-               "elegant",
-               "flabby",
-               "hollow",
-               "lucious",
-               "mellow",
-               "oily",
-               "opulent",
-               "petillance",
-               "powerful",
-               "rich",
-               "thin"
-            ],
-            "default": null,
-            "title": "mouth feel",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 9
-         },
-         {
-            "values": [
-               "short",
-               "med -",
-               "medium",
-               "med +",
-               "long"
-            ],
-            "default": null,
-            "title": "finish",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 10
-         },
-         {
-            "values": [
-               "tart",
-               "bitter",
-               "salty",
-               "sweet",
-               "smoky"
-            ],
-            "default": null,
-            "title": "flavour at finish",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 11
-         }
-      ]
-   },
-   "conclusion": {
-      "title": "Conclusion",
-      "properties": [
-         {
-            "values": [
-               "poor",
-               "acceptable",
-               "good",
-               "very good",
-               "outstanding"
-            ],
-            "default": null,
-            "title": "quality",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "range",
-            "order": 1
-         },
-         {
-            "values": [
-               "unbalanced",
-               "somewhat balanced",
-               "balanced"
-            ],
-            "default": null,
-            "title": "balance",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "range",
-            "order": 2
-         },
-         {
-            "values": [
-               "yes",
-               "no"
-            ],
-            "default": null,
-            "title": "varietal typicity",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 3
-         },
-         {
-            "values": [
-               "yes",
-               "no"
-            ],
-            "default": null,
-            "title": "regional typicity",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 4
-         },
-         {
-            "values": [
-               "new world",
-               "old world"
-            ],
-            "default": null,
-            "title": "location",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 5
-         },
-         {
-            "values": [
-               "cool",
-               "moderate",
-               "warm"
-            ],
-            "default": null,
-            "title": "climate",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 6
-         },
-         {
-            "values": [
-               "1-3 yrs",
-               "3-5yrs",
-               "5-10yrs",
-               "10-20yrs"
-            ],
-            "default": null,
-            "title": "age",
-            "isIncluded": true,
-            "isMultiSelect": false,
-            "display": "select",
-            "order": 7
-         }
-      ]
-   },
-   "note": {
-      "title": "Note"
-   }
+   ]
 }

@@ -2,37 +2,38 @@
     'item-is-not-included' : !property.isIncluded, 
     'item-is-included' : property.isIncluded}">
 
-  <ion-label class="small-label item-title" position="stacked" color="secondary" *ngIf="property.isIncluded">
-    {{property.title}}</ion-label>
+  <ion-label class="small-label item-title" position="stacked">{{property.title}}</ion-label>
 
-  <ion-item lines="none" [ngClass]="{
-    'item-is-range' : property.display == 1, 
-    'item-is-select' : property.display == 0 }">
+  <ion-item lines="full"
+    [ngClass]="{'item-is-range' : property.display == 1, 'item-is-select' : property.display == 0 }">
 
-    <!-- Select Display -->
-    <div class="item-control item-select" *ngIf="property.display==0 && property.isIncluded">
-      <ion-select [(ngModel)]="property.selectedValues" *ngIf="property.isMultiSelect" placeholder="{{property.title}}"
-        [multiple]="true" (ionChange)="onPropertyChange($event)" interface="action-sheet">
-        <ion-select-option *ngFor="let x of property.values" value={{x}}>{{x}}</ion-select-option>
-      </ion-select>
+    <!-- Select -->
+    <ion-select [(ngModel)]="property.selectedValue" placeholder="{{property.subtitle}}"
+      class="item-control item-select" *ngIf="property.display==0 && property.isIncluded" [multiple]="false"
+      (ionChange)="onPropertyChange($event)" interface="action-sheet">
+      <ion-select-option *ngFor="let x of property.values" value={{x}}>{{x}}</ion-select-option>
+    </ion-select>
 
-      <ion-select [(ngModel)]="property.selectedValue" *ngIf="!property.isMultiSelect" placeholder="{{property.title}}"
-        (ionChange)="onPropertyChange($event)" interface="action-sheet">
-        <ion-select-option *ngFor="let x of property.values" value={{x}}>{{x}}</ion-select-option>
-      </ion-select>
-    </div>
+    <!-- Multiselect -->
+    <ion-select [(ngModel)]="property.selectedValues" placeholder="{{property.subtitle}}"
+      class="item-control item-select" *ngIf="property.display==1 && property.isIncluded" [multiple]="true"
+      (ionChange)="onPropertyChange($event)" interface="action-sheet">
+      <ion-select-option *ngFor="let x of property.values" value={{x}}>{{x}}</ion-select-option>
+    </ion-select>
 
     <!-- Range Display -->
-    <div class="item-control item-range" *ngIf="property.display==1  && property.isIncluded">
+    <div class="item-control item-range" *ngIf="property.display==2  && property.isIncluded">
       <ion-label class="small-label range-value">{{property.selectedValue}}</ion-label>
 
       <ion-range color="primary" [snaps]="true" [min]="0" [max]="property.values.length-1"
         (ionChange)="onPropertyChange($event)"></ion-range>
     </div>
 
-    <!-- Label when property is not included -->
-    <ion-label class="small-label item-title-not-included" *ngIf="!property.isIncluded">{{property.title}}</ion-label>
+    <!-- Boolean -->
+    <p class="item-control" *ngIf="property.display==3">{{property.subtitle}}</p>
 
-    <ion-toggle checked="{{property.isIncluded}}" slot="start" (ionChange)="onIsIncludedChange($event)"></ion-toggle>
+    <!-- toggle -->
+    <ion-toggle color="tertiary" checked="{{property.isIncluded}}" slot="end" (ionChange)="onIsIncludedChange($event)">
+    </ion-toggle>
   </ion-item>
 </div>

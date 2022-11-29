@@ -22,7 +22,8 @@ const routes: Routes = [
   {
     path: 'tasting',
     loadChildren: () => import('./pages/tasting/tasting.module').then( m => m.TastingPageModule)
-  },{
+  },
+  {
     path: '',
     redirectTo: 'tabs',
     pathMatch: 'full'

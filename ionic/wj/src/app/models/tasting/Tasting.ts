@@ -1,21 +1,12 @@
 import { TastingSystem } from "src/app/interfaces/TastingSystem";
-import { TastingAppearanceStructure } from "./appearance/TastingAppearanceStructure";
-import { TastingNoseTertiary } from "./nose/TastingNoseTertiary";
-import { TastingNoseSecondary } from "./nose/TastingNoseSecondary";
-import { TastingNoseStructure } from "./nose/TastingNoseStructure";
-import { TastingNosePrimary } from "./nose/TastingNosePrimary";
-import { TastingConclusionStructure } from "./conclusion/TastingConclusionStructure";
-import { TastingNose } from "./nose/TastingNose";
-import { TastingPalate } from "./palate/TastingPalate";
-import { TastingConclusion } from "./conclusion/TastingConclusion";
-import { TastingAppearance } from "./appearance/TastingAppearance";
+import { TastingSystemStep } from "src/app/interfaces/TastingSystemStep";
+import { environment } from "src/environments/environment";
+import { TastingPropertyEvent } from "./property/TastingPropertyEvent";
+import { TastingPropertyIsIncludedEvent } from "./property/TastingPropertyIsIncludedEvent";
+import { TastingProperty } from "./property/TastingPropery";
 
 export class Tasting {
-    appearance: TastingAppearance;
-    nose: TastingNose;
-    palate: TastingPalate;
-    conclusion: TastingConclusion;
-    note: string;
+    note: string = null;
     featured_image: string;
     seo_title: string;
     published: Date;
@@ -25,13 +16,45 @@ export class Tasting {
     region: string;
     variety: string;
     summary: string;
+    steps: Array<TastingSystemStep>
+    properties: Array<TastingProperty>
 
-    constructor(public style: string, system: TastingSystem) {
-        this.appearance = new TastingAppearance(system, style);
-        this.nose = new TastingNose(system, style);
-        this.palate = new TastingPalate(system, style);
-        this.conclusion = new TastingConclusion(system, style);
-        this.note = "";
+    constructor(system: TastingSystem) {
+        this.steps = system.steps;
+        this.properties = system.properties.map(p => new TastingProperty(p));
+    }
+
+    sort() {
+        this.properties.sort((n1: TastingProperty, n2: TastingProperty) => {
+            if (n1.isIncluded > n2.isIncluded) return -1;
+            if (n1.isIncluded < n2.isIncluded) return 1;
+            if (n1.order > n2.order) return 1;
+            if (n1.order < n2.order) return -1;
+            return 0;
+        });
+    }
+
+    getProperty(title: string): TastingProperty {
+        var result = this.properties.find(e => e.title == title);
+        if (result !== undefined) return result;
+        if (!environment.production)
+            console.log("TastingPropertySet getProperty: ", this);
+
+        throw new Error("cannot find property: " + title);
+    }
+
+    isIncludedChangeEvent($event: TastingPropertyIsIncludedEvent) {
+        var p = this.getProperty($event.title);
+        p.isIncluded = $event.isIncluded;
+       // this.note = this.writer.write(this);
+        this.sort();
+    }
+
+    propertyChangeEvent($event: TastingPropertyEvent) {
+        var p = this.getProperty($event.title);
+        p.selectedValue = $event.selectedValue;
+        p.selectedValues = $event.selectedValues;
+       // this.note = this.writer.write(this);
     }
 }
 

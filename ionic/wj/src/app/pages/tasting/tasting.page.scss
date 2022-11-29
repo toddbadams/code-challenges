@@ -34,8 +34,12 @@ ion-content {
 }
 
 ion-toolbar,
-ion-header {
+ion-header,
+ion-list,
+.list-ios,
+ion-item {
     --background: transparent;
+    background: transparent;
 }
 
 .header-ios ion-toolbar:last-of-type {
@@ -77,4 +81,9 @@ ion-button.next {
 
 ion-progress {
     z-index: 999;
+}
+
+ion-card-content.card-content-ios {
+    padding-left: 0px;
+    padding-right: 0px;
 }

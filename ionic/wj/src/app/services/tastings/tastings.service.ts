@@ -4,13 +4,11 @@ import { Observable } from 'rxjs';
 import { TastingSystem } from 'src/app/interfaces/TastingSystem';
 import { Tasting } from 'src/app/models/tasting/Tasting';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { TastingStepper } from 'src/app/models/tasting/TastingStepper';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TastingsService {
-  stepper: TastingStepper;
   currentTasting: Tasting;
   private tastings: Observable<Tasting[]>;
   private tastingCollection: AngularFirestoreCollection<Tasting>;
@@ -34,15 +32,6 @@ export class TastingsService {
 
   getTastings(): Observable<Tasting[]> {
     return this.tastings;
-  }
-
-  createStepper(system: TastingSystem): TastingStepper {
-    this.stepper = new TastingStepper(system);
-    return this.stepper;
-  }
-
-  getStepper(): TastingStepper {
-    return this.stepper;
   }
 }
 
